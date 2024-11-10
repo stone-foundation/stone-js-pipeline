@@ -6,3 +6,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
+## 0.0.1 (2024-11-10)
+
+
+### Bug Fixes
+
+* start version from 0.0.0 and change the License ([7e76327](https://github.com/stonemjs/pipeline/commit/7e7632756073c0d8857d1774c666f2e6070b1c52))
+
+
+### Miscellaneous Chores
+
+* release 0.0.1 ([655e806](https://github.com/stonemjs/pipeline/commit/655e806e4cef153a6cf53ac9ad1adc5978fc8170))
+
