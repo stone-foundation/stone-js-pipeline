@@ -18,6 +18,3 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 * release 0.0.1 ([655e806](https://github.com/stonemjs/pipeline/commit/655e806e4cef153a6cf53ac9ad1adc5978fc8170))
 
-## 1.0.0 - 01 October, 2023
-
-### Initial version
