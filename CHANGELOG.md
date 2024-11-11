@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
+## [0.0.4](https://github.com/stonemjs/pipeline/compare/v0.0.3...v0.0.4) (2024-11-11)
+
+
+### Bug Fixes
+
+* add scope to actions/setup-node@v4 for publishing to npm ([46b6029](https://github.com/stonemjs/pipeline/commit/46b6029fd58002358b5de55bd0344234d9bcc008))
+
 ## [0.0.3](https://github.com/stonemjs/pipeline/compare/v0.0.2...v0.0.3) (2024-11-11)
 
 
