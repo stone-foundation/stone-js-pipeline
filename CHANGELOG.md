@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
+## [0.0.3](https://github.com/stonemjs/pipeline/compare/v0.0.2...v0.0.3) (2024-11-11)
+
+
+### Bug Fixes
+
+* replace release-please token with a PAT token ([0452c12](https://github.com/stonemjs/pipeline/commit/0452c124312c3a2cfd807d3c51a40957cf7b8b6a))
+
 ## [0.0.2](https://github.com/stonemjs/pipeline/compare/v0.0.1...v0.0.2) (2024-11-11)
 
 
