@@ -69,14 +69,14 @@ Here’s a simple example to get you started:
    const pipeline = new Pipeline<number>();
    
    // Setting up pipes (functions that will transform the passable value)
-   const addOne = (next: (value: number) => number, value: number) => next(value + 1);
-   const multiplyByTwo = (next: (value: number) => number, value: number) => next(value * 2);
+   const addOne = (value: number, next: (value: number) => number) => next(value + 1);
+   const multiplyByTwo = (value: number, next: (value: number) => number) => next(value * 2);
    
    // Configure the pipeline
-   pipeline.send(1).through([addOne, multiplyByTwo]).sync(true);
+   pipeline.send(1).through([addOne, multiplyByTwo]).sync();
    
    // Run the pipeline and get the result
-   const result = pipeline.then((value) => value); 
+   const result = pipeline.thenReturn(); 
    
    console.log(result); // Output: 4
    ```
@@ -85,7 +85,7 @@ In the above example:
 - `send(1)` initializes the pipeline with a value of `1`.
 - `through([addOne, multiplyByTwo])` sets up the transformation functions (pipes).
 - `sync(true)` sets synchronous execution.
-- `then()` runs the pipeline, with the output being `(1 + 1) * 2 = 4`.
+- `thenReturn()` runs the pipeline, with the output being `(1 + 1) * 2 = 4`.
 
 ## Usage
 
@@ -102,8 +102,8 @@ import { Pipeline } from '@stone-js/pipeline';
 const pipeline = new Pipeline<string>();
 
 // Step 2: Create a few pipes (transformation functions)
-const toUpperCase = (next: (value: string) => string, value: string) => next(value.toUpperCase());
-const addGreeting = (next: (value: string) => string, value: string) => next(`Hello, ${value}!`);
+const toUpperCase = (value: string, next: (value: string) => string) => next(value.toUpperCase());
+const addGreeting = (value: string, next: (value: string) => string) => next(`Hello, ${value}!`);
 
 // Step 3: Set the initial passable value and add pipes to the pipeline
 pipeline.send("world").through([toUpperCase, addGreeting]).sync(true);
@@ -125,7 +125,7 @@ import { Pipeline } from '@stone-js/pipeline';
 const pipeline = new Pipeline<number>();
 
 // Step 2: Create asynchronous pipes
-const fetchData = async (next: (value: number) => Promise<number>, value: number) => {
+const fetchData = async (value: number, next: (value: number) => Promise<number>) => {
   const fetchedValue = await mockApiFetch(value);
   return next(fetchedValue);
 };
@@ -137,12 +137,13 @@ const mockApiFetch = async (value: number): Promise<number> => {
 };
 
 // Step 3: Configure the pipeline
-pipeline.send(5).through([fetchData]).sync(false);
+pipeline.send(5).through([fetchData]);
 
 // Step 4: Execute the pipeline asynchronously and get the result
-pipeline.then(async (result) => {
-  console.log(result); // Output after 1 second: 50
-});
+const result = pipeline.thenReturn();
+
+// Output after 1 second: 50
+console.log(result);
 ```
 
 ### Dependency Injection with Container
@@ -157,18 +158,19 @@ const container: Container = {
   resolve: (key) => {
     if (key === 'toUpperCase') {
       return {
-        handle: (value: string) => value.toUpperCase(),
+        handle: (value: string, next: (value: string) => string) => next(value.toUpperCase()),
       };
     }
     throw new Error('Unknown dependency');
   },
+  has: (key) => key === 'toUpperCase'
 };
 
 // Step 2: Create a pipeline with the container
 const pipeline = new Pipeline<string>(container);
 
 // Step 3: Use a string identifier to resolve pipes through the container
-pipeline.send('hello').through(['toUpperCase']).sync(true);
+pipeline.send('hello').through(['toUpperCase']).sync();
 
 // Step 4: Execute the pipeline
 const result = pipeline.thenReturn();
@@ -183,12 +185,13 @@ The pipeline also allows customization of the method to call on each pipe using 
 import { Pipeline } from '@stone-js/pipeline';
 
 class CustomPipe {
-  transform(value: string): string {
-    return value.split('').reverse().join('');
+  transform(value: string, next: (value: string) => string): string {
+    return next(value.split('').reverse().join(''));
   }
 }
 
 const pipeline = new Pipeline<string>();
+
 pipeline.send('pipeline')
   .through([new CustomPipe()])
   .via('transform') // Set method to 'transform'
