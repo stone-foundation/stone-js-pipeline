@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
+## 0.0.41 (2024-11-11)
+
+
+### Features
+
+* implement Pipeline ([35622cc](https://github.com/stonemjs/pipeline/commit/35622cc67786f7e55da6b1f6694dfa52441eba4f))
+
 ## [0.0.4](https://github.com/stonemjs/pipeline/compare/v0.0.3...v0.0.4) (2024-11-11)
 
 
