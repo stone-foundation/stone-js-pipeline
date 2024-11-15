@@ -37,7 +37,7 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
    * @param container - The optional container for dependency resolution.
    * @returns The pipeline instance.
    */
-  static create (container?: Container): Pipeline<Passable> {
+  static create<T extends Passable, R extends Passable | T = T> (container?: Container): Pipeline<T, R> {
     return new this(container)
   }
 
@@ -46,7 +46,7 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
    *
    * @param container - Optional dependency injection container.
    */
-  constructor (container?: Container) {
+  protected constructor (container?: Container) {
     this.passable = []
     this.isSync = false
     this.metaPipes = []

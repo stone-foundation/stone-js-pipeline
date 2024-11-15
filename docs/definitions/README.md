@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.4**](../README.md) • **Docs**
+[**Pipeline Documentation v0.0.41**](../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.4](../modules.md) / definitions
+[Pipeline Documentation v0.0.41](../modules.md) / definitions
 
 # definitions
 

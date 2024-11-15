@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.4**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.41**](../../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.4](../../modules.md) / [Pipeline](../README.md) / Pipeline
+[Pipeline Documentation v0.0.41](../../modules.md) / [Pipeline](../README.md) / Pipeline
 
 # Class: Pipeline\<T, R\>
 
@@ -25,7 +25,7 @@ on a set of passable values through multiple configurable pipes.
 
 ### new Pipeline()
 
-> **new Pipeline**\<`T`, `R`\>(`container`?): [`Pipeline`](Pipeline.md)\<`T`, `R`\>
+> `protected` **new Pipeline**\<`T`, `R`\>(`container`?): [`Pipeline`](Pipeline.md)\<`T`, `R`\>
 
 Initialize a new Pipeline instance.
 
@@ -41,7 +41,7 @@ Optional dependency injection container.
 
 #### Defined in
 
-[Pipeline.ts:49](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L49)
+[Pipeline.ts:49](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L49)
 
 ## Methods
 
@@ -65,7 +65,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:65](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L65)
+[Pipeline.ts:65](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L65)
 
 ***
 
@@ -89,7 +89,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:102](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L102)
+[Pipeline.ts:102](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L102)
 
 ***
 
@@ -113,7 +113,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:76](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L76)
+[Pipeline.ts:76](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L76)
 
 ***
 
@@ -137,7 +137,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:123](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L123)
+[Pipeline.ts:123](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L123)
 
 ***
 
@@ -161,7 +161,7 @@ The result of the pipeline, either synchronously or as a Promise.
 
 #### Defined in
 
-[Pipeline.ts:134](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L134)
+[Pipeline.ts:134](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L134)
 
 ***
 
@@ -179,7 +179,7 @@ The result of the pipeline, either synchronously or as a Promise.
 
 #### Defined in
 
-[Pipeline.ts:148](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L148)
+[Pipeline.ts:148](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L148)
 
 ***
 
@@ -203,7 +203,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:87](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L87)
+[Pipeline.ts:87](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L87)
 
 ***
 
@@ -227,15 +227,21 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:112](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L112)
+[Pipeline.ts:112](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L112)
 
 ***
 
 ### create()
 
-> `static` **create**(`container`?): [`Pipeline`](Pipeline.md)\<[`Passable`](../../definitions/type-aliases/Passable.md), [`Passable`](../../definitions/type-aliases/Passable.md)\>
+> `static` **create**\<`T`, `R`\>(`container`?): [`Pipeline`](Pipeline.md)\<`T`, `R`\>
 
 Create a pipeline instance.
+
+#### Type Parameters
+
+• **T** *extends* [`Passable`](../../definitions/type-aliases/Passable.md)
+
+• **R** *extends* [`Passable`](../../definitions/type-aliases/Passable.md) = `T`
 
 #### Parameters
 
@@ -245,10 +251,10 @@ The optional container for dependency resolution.
 
 #### Returns
 
-[`Pipeline`](Pipeline.md)\<[`Passable`](../../definitions/type-aliases/Passable.md), [`Passable`](../../definitions/type-aliases/Passable.md)\>
+[`Pipeline`](Pipeline.md)\<`T`, `R`\>
 
 The pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:40](https://github.com/stonemjs/pipeline/blob/c58d6a845c753f59fdcbc14c7c929ef7d9fab2e5/src/Pipeline.ts#L40)
+[Pipeline.ts:40](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L40)

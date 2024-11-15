@@ -11,13 +11,13 @@
     "noEmit": true,
     "allowJs": true,
     "module": "ESNext",
-    "types": ["jest"],
     "target": "ESNext",
     "declaration": false,
     "skipLibCheck": true,
     "declarationMap": false,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "types": ["node", "vitest/globals"],
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   }
