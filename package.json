@@ -4,7 +4,10 @@
   "description": "An implementation based on the Chain of Responsibility (aka CoR) design pattern.",
   "author": "Mr. Stone <evensstone@gmail.com>",
   "license": "Apache-2.0",
-  "repository": "git@github.com:stonemjs/pipeline.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stonemjs/pipeline.git"
+  },
   "homepage": "https://github.com/stonemjs/pipeline#readme",
   "bugs": {
     "url": "https://github.com/stonemjs/pipeline/issues"
