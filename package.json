@@ -76,5 +76,8 @@
       "describe",
       "beforeEach"
     ]
+  },
+  "dependencies": {
+    "@stone-js/service-container": "^0.0.42"
   }
 }

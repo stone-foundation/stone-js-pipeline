@@ -67,33 +67,6 @@ export interface PipeInstance<T extends Passable, R extends Passable | T = T> {
 }
 
 /**
- * Represents a container that resolves dependencies.
- *
- * @template T - The type of the resolved object.
- *
- * This container is responsible for dependency injection, allowing the retrieval of instances by key or constructor.
- * It provides methods to resolve and check the existence of dependencies.
- */
-export interface Container {
-  /**
-   * Resolves a dependency by its key or constructor function.
-   *
-   * @typeParam T - The type of the resolved instance.
-   * @param key - The key or constructor used to resolve the dependency.
-   * @returns The resolved object instance of type `T`.
-   */
-  resolve: <T>(key: string | Function) => T
-
-  /**
-   * Checks if a dependency with the specified key or constructor function exists in the container.
-   *
-   * @param key - The key or constructor used to identify the dependency.
-   * @returns A boolean indicating whether the dependency exists.
-   */
-  has: (key: string | Function) => boolean
-}
-
-/**
  * Represents a MetaPipe configuration item, with a pipe, parameters, and priority level.
  *
  * A configuration object used for managing pipes in the pipeline.

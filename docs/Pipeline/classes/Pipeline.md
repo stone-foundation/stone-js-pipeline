@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.41**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.42**](../../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.41](../../modules.md) / [Pipeline](../README.md) / Pipeline
+[Pipeline Documentation v0.0.42](../../modules.md) / [Pipeline](../README.md) / Pipeline
 
 # Class: Pipeline\<T, R\>
 
@@ -31,7 +31,7 @@ Initialize a new Pipeline instance.
 
 #### Parameters
 
-• **container?**: [`Container`](../../definitions/interfaces/Container.md)
+• **container?**: `Container`
 
 Optional dependency injection container.
 
@@ -41,7 +41,7 @@ Optional dependency injection container.
 
 #### Defined in
 
-[Pipeline.ts:49](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L49)
+[Pipeline.ts:50](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L50)
 
 ## Methods
 
@@ -65,7 +65,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:65](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L65)
+[Pipeline.ts:66](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L66)
 
 ***
 
@@ -89,7 +89,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:102](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L102)
+[Pipeline.ts:103](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L103)
 
 ***
 
@@ -113,7 +113,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:76](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L76)
+[Pipeline.ts:77](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L77)
 
 ***
 
@@ -137,7 +137,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:123](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L123)
+[Pipeline.ts:124](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L124)
 
 ***
 
@@ -161,7 +161,7 @@ The result of the pipeline, either synchronously or as a Promise.
 
 #### Defined in
 
-[Pipeline.ts:134](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L134)
+[Pipeline.ts:135](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L135)
 
 ***
 
@@ -179,7 +179,7 @@ The result of the pipeline, either synchronously or as a Promise.
 
 #### Defined in
 
-[Pipeline.ts:148](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L148)
+[Pipeline.ts:149](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L149)
 
 ***
 
@@ -203,7 +203,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:87](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L87)
+[Pipeline.ts:88](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L88)
 
 ***
 
@@ -227,7 +227,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:112](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L112)
+[Pipeline.ts:113](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L113)
 
 ***
 
@@ -245,7 +245,7 @@ Create a pipeline instance.
 
 #### Parameters
 
-• **container?**: [`Container`](../../definitions/interfaces/Container.md)
+• **container?**: `Container`
 
 The optional container for dependency resolution.
 
@@ -257,4 +257,4 @@ The pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:40](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/Pipeline.ts#L40)
+[Pipeline.ts:41](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L41)

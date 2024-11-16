@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.41**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.42**](../../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.41](../../modules.md) / [definitions](../README.md) / Pipe
+[Pipeline Documentation v0.0.42](../../modules.md) / [definitions](../README.md) / Pipe
 
 # Type Alias: Pipe
 
@@ -15,4 +15,4 @@ to be resolved by the container.
 
 ## Defined in
 
-[definitions.ts:7](https://github.com/stonemjs/pipeline/blob/cd2c1fe6f2982b63b3356203b0c87edf8640b155/src/definitions.ts#L7)
+[definitions.ts:7](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/definitions.ts#L7)

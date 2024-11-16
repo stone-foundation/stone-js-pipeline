@@ -1,4 +1,5 @@
-import { Container, MetaPipe, MixedPipe, Passable, Pipe, PipeArguments, PipeExecutor, PipeInstance, ReducerCallback } from './definitions'
+import { Container } from '@stone-js/service-container'
+import { MetaPipe, MixedPipe, Passable, Pipe, PipeArguments, PipeExecutor, PipeInstance, ReducerCallback } from './definitions'
 
 /**
  * Class representing a Pipeline.
@@ -184,21 +185,48 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
    * @throws TypeError If the pipe cannot be resolved or the method is missing.
    */
   private executePipe (currentPipe: Pipe, args: PipeArguments<T, R>): R {
-    let instance: PipeInstance<T, R>
+    let instance = this.container?.resolve<PipeInstance<T, R>>(currentPipe)
 
-    if (this.container?.has(currentPipe) === true) {
-      instance = this.container.resolve(currentPipe)
-    } else if (typeof currentPipe === 'function') {
-      instance = Object.prototype.hasOwnProperty.call(currentPipe, 'prototype') ? new currentPipe.prototype.constructor() : { [this.method]: currentPipe }
-    } else {
-      throw new TypeError(`Cannot resolve this pipe ${currentPipe}.`)
+    if (instance === undefined) {
+      if (typeof currentPipe === 'function') {
+        instance = this.createInstanceFromPipe(currentPipe)
+      }
+
+      if (instance === undefined) {
+        throw new TypeError(`Cannot resolve this pipe ${String(currentPipe)}.`)
+      }
     }
 
-    if (instance[this.method] === undefined) {
-      throw new TypeError(`No method with this name(${this.method}) exists in this constructor(${currentPipe.constructor.name})`)
-    }
+    this.validatePipeMethod(instance, currentPipe)
 
     return instance[this.method].apply(instance, args)
+  }
+
+  /**
+   * Create an instance from the provided pipe.
+   *
+   * @param currentPipe - The pipe function to create an instance from.
+   * @returns The created instance or an object with the method.
+   */
+  private createInstanceFromPipe (currentPipe: Function): any {
+    return Object.prototype.hasOwnProperty.call(currentPipe, 'prototype')
+      ? new currentPipe.prototype.constructor()
+      : { [this.method]: currentPipe }
+  }
+
+  /**
+   * Validate that the required method exists on the instance.
+   *
+   * @param instance - The instance to validate.
+   * @param currentPipe - The current pipe being executed.
+   * @throws {TypeError} If the method does not exist on the instance.
+   */
+  private validatePipeMethod (instance: any, currentPipe: Pipe): void {
+    if (typeof instance[this.method] !== 'function') {
+      throw new TypeError(
+        `No method with this name(${this.method}) exists in this constructor(${currentPipe.constructor.name})`
+      )
+    }
   }
 
   /**
