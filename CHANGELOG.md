@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
+## [0.0.43](https://github.com/stonemjs/pipeline/compare/v0.0.42...v0.0.43) (2024-11-16)
+
+
+### Bug Fixes
+
+* import real container from service container and refactor executePipe ([ad92185](https://github.com/stonemjs/pipeline/commit/ad92185fdaad6aa31050eec920120bbf8fd1ebfa))
+
 ## [0.0.42](https://github.com/stonemjs/pipeline/compare/v0.0.41...v0.0.42) (2024-11-15)
 
 
