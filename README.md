@@ -175,7 +175,7 @@ const mockApiFetch = async (value: number): Promise<number> => {
 pipeline.send(5).through([fetchData]);
 
 // Step 4: Execute the pipeline asynchronously and get the result
-const result = pipeline.thenReturn();
+const result = await pipeline.thenReturn();
 
 // Output after 1 second: 50
 console.log(result);
@@ -235,6 +235,60 @@ pipeline.send('pipeline')
 const result = pipeline.thenReturn();
 console.log(result); // Output: "enilepip"
 ```
+
+### Pipe Executor Order
+
+The `Pipeline` class allows you to control the order in which pipes are executed using the `priority` attribute in the `MetaPipe` configuration. Each pipe in the pipeline can be assigned an optional priority level, which determines its execution order.
+
+#### MetaPipe Configuration
+
+The `MetaPipe` interface represents a configuration object for pipes, which includes the pipe to execute, optional parameters, and a priority level:
+
+```typescript
+export interface MetaPipe {
+  /** The pipe to execute, which can be a function or a string identifier. */
+  pipe: Pipe;
+  /** An optional array of parameters to pass to the pipe. */
+  params?: unknown[];
+  /** An optional priority level of the pipe. */
+  priority?: number;
+}
+```
+
+- **`pipe`**: The pipe to execute, which can be either a function or a string identifier.
+- **`params`**: Optional parameters that are passed to the pipe during execution.
+- **`priority`**: An optional number that specifies the priority level of the pipe. Pipes are executed in order of their priority, with lower values indicating higher priority.
+
+#### Setting Pipe Priorities
+
+When adding pipes to the pipeline, you can assign different priority levels to control their execution order. By default, all pipes have the same priority level, but you can adjust these values to ensure certain operations are performed before others.
+
+For example:
+
+```typescript
+import { Pipeline, MetaPipe } from '@stone-js/pipeline';
+
+// Create pipes with different priority levels
+const pipe1: MetaPipe = {
+  pipe: (value: number, next: (value: number) => number) => next(value + 1),
+  priority: 1, // High priority, executed first
+};
+
+const pipe2: MetaPipe = {
+  pipe: (value: number, next: (value: number) => number) => next(value * 2),
+  priority: 2, // Lower priority, executed after pipe1
+};
+
+// Create a new pipeline and configure it with prioritized pipes
+const pipeline = new Pipeline<number>();
+pipeline.send(1).through([pipe2, pipe1]).sync(true);
+
+// Execute the pipeline
+const result = pipeline.thenReturn();
+console.log(result); // Output: 4 (1 + 1, then multiplied by 2)
+```
+
+In this example, `pipe1` is executed first because it has a higher priority (`priority: 1`), while `pipe2` is executed afterward (`priority: 2`). By default, if no priority is provided, all pipes are treated equally and executed in the order they are added.
 
 ## Summary
 
