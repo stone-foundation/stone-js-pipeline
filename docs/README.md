@@ -1,4 +1,4 @@
-**Pipeline Documentation v0.0.42** • [**Docs**](modules.md)
+**Pipeline Documentation v0.0.43** • [**Docs**](modules.md)
 
 ***
 

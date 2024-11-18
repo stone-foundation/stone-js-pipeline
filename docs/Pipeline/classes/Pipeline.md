@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.42**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.43**](../../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.42](../../modules.md) / [Pipeline](../README.md) / Pipeline
+[Pipeline Documentation v0.0.43](../../modules.md) / [Pipeline](../README.md) / Pipeline
 
 # Class: Pipeline\<T, R\>
 
@@ -25,15 +25,15 @@ on a set of passable values through multiple configurable pipes.
 
 ### new Pipeline()
 
-> `protected` **new Pipeline**\<`T`, `R`\>(`container`?): [`Pipeline`](Pipeline.md)\<`T`, `R`\>
+> `protected` **new Pipeline**\<`T`, `R`\>(`options`?): [`Pipeline`](Pipeline.md)\<`T`, `R`\>
 
 Initialize a new Pipeline instance.
 
 #### Parameters
 
-• **container?**: `Container`
+• **options?**: [`PipelineOptions`](../../definitions/interfaces/PipelineOptions.md)\<`T`, `R`\>
 
-Optional dependency injection container.
+Optional Pipeline options.
 
 #### Returns
 
@@ -41,7 +41,7 @@ Optional dependency injection container.
 
 #### Defined in
 
-[Pipeline.ts:50](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L50)
+[Pipeline.ts:49](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L49)
 
 ## Methods
 
@@ -65,7 +65,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:66](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L66)
+[Pipeline.ts:65](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L65)
 
 ***
 
@@ -89,7 +89,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:103](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L103)
+[Pipeline.ts:102](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L102)
 
 ***
 
@@ -113,7 +113,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:77](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L77)
+[Pipeline.ts:76](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L76)
 
 ***
 
@@ -137,7 +137,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:124](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L124)
+[Pipeline.ts:123](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L123)
 
 ***
 
@@ -161,7 +161,7 @@ The result of the pipeline, either synchronously or as a Promise.
 
 #### Defined in
 
-[Pipeline.ts:135](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L135)
+[Pipeline.ts:134](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L134)
 
 ***
 
@@ -179,7 +179,7 @@ The result of the pipeline, either synchronously or as a Promise.
 
 #### Defined in
 
-[Pipeline.ts:149](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L149)
+[Pipeline.ts:148](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L148)
 
 ***
 
@@ -203,7 +203,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:88](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L88)
+[Pipeline.ts:87](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L87)
 
 ***
 
@@ -227,13 +227,13 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:113](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L113)
+[Pipeline.ts:112](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L112)
 
 ***
 
 ### create()
 
-> `static` **create**\<`T`, `R`\>(`container`?): [`Pipeline`](Pipeline.md)\<`T`, `R`\>
+> `static` **create**\<`T`, `R`\>(`options`?): [`Pipeline`](Pipeline.md)\<`T`, `R`\>
 
 Create a pipeline instance.
 
@@ -245,9 +245,9 @@ Create a pipeline instance.
 
 #### Parameters
 
-• **container?**: `Container`
+• **options?**: [`PipelineOptions`](../../definitions/interfaces/PipelineOptions.md)\<`T`, `R`\>
 
-The optional container for dependency resolution.
+Optional Pipeline options.
 
 #### Returns
 
@@ -257,4 +257,4 @@ The pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:41](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/Pipeline.ts#L41)
+[Pipeline.ts:40](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/Pipeline.ts#L40)

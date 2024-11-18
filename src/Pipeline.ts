@@ -1,5 +1,4 @@
-import { Container } from '@stone-js/service-container'
-import { MetaPipe, MixedPipe, Passable, Pipe, PipeArguments, PipeExecutor, PipeInstance, ReducerCallback } from './definitions'
+import { MetaPipe, MixedPipe, Passable, Pipe, PipeArguments, PipeExecutor, PipelineOptions, PipeResolver, ReducerCallback } from './definitions'
 
 /**
  * Class representing a Pipeline.
@@ -26,35 +25,35 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
   /** The metadata associated with each pipe */
   private metaPipes: MetaPipe[]
 
-  /** The optional container used for dependency resolution */
-  private readonly container?: Container
-
   /** The default priority for the pipes in the pipeline */
   private _defaultPriority: number
+
+  /** The resolver function used to resolve pipes before they are executed in the pipeline. */
+  private readonly resolver?: PipeResolver<T, R>
 
   /**
    * Create a pipeline instance.
    *
-   * @param container - The optional container for dependency resolution.
+   * @param options - Optional Pipeline options.
    * @returns The pipeline instance.
    */
-  static create<T extends Passable, R extends Passable | T = T> (container?: Container): Pipeline<T, R> {
-    return new this(container)
+  static create<T extends Passable, R extends Passable | T = T> (options?: PipelineOptions<T, R>): Pipeline<T, R> {
+    return new this(options)
   }
 
   /**
    * Initialize a new Pipeline instance.
    *
-   * @param container - Optional dependency injection container.
+   * @param options - Optional Pipeline options.
    */
-  protected constructor (container?: Container) {
+  protected constructor (options?: PipelineOptions<T, R>) {
     this.passable = []
     this.isSync = false
     this.metaPipes = []
     this.sortedPipes = []
     this.method = 'handle'
-    this.container = container
     this._defaultPriority = 10
+    this.resolver = options?.resolver
   }
 
   /**
@@ -185,7 +184,7 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
    * @throws TypeError If the pipe cannot be resolved or the method is missing.
    */
   private executePipe (currentPipe: Pipe, args: PipeArguments<T, R>): R {
-    let instance = this.container?.resolve<PipeInstance<T, R>>(currentPipe)
+    let instance = (typeof this.resolver === 'function') ? this.resolver(currentPipe) : undefined
 
     if (instance === undefined) {
       if (typeof currentPipe === 'function') {

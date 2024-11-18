@@ -1,8 +1,7 @@
 /**
  * A type that can either be a function or a string, representing a pipeline step.
  *
- * A pipe can either be a function that performs an action or a string identifier
- * to be resolved by the container.
+ * A pipe can either be a function that performs an action or a string identifier to be resolved.
  */
 export type Pipe = ((...args: any[]) => any) | string | Function
 
@@ -42,6 +41,17 @@ export type PipeArguments<T extends Passable, R extends Passable | T = T> = Arra
 export type PipeExecutor<T extends Passable, R extends Passable | T = T> = (...passable: T[]) => R | Promise<R>
 
 /**
+ * Next Pipe Executor function type.
+ *
+ * @param passable - The passable objects being sent through the pipeline.
+ * @returns The result of the execution, which could be a synchronous or asynchronous response.
+ *
+ * @template T - The type of the passable object.
+ * @template R - The type of the return value from the pipeline execution, defaulting to `T`.
+ */
+export type NextPipe<T extends Passable, R extends Passable | T = T> = PipeExecutor<T, R>
+
+/**
  * Reducer callback function type used to build a sequence of pipe executions.
  *
  * @param previousPipeExecutor - The executor from the previous step in the pipeline.
@@ -52,6 +62,18 @@ export type PipeExecutor<T extends Passable, R extends Passable | T = T> = (...p
  * @template R - The type of the return value from the pipeline execution, defaulting to `T`.
  */
 export type ReducerCallback<T extends Passable, R extends Passable | T = T> = (previousPipeExecutor: PipeExecutor<T, R>, currentPipe: Pipe) => PipeExecutor<T, R>
+
+/**
+ * A function type that represents a resolver for a given pipe.
+ *
+ * @typeParam T - The type of the passable object in the pipeline.
+ * @typeParam R - The type of the return value from the resolved pipe, which defaults to `T`.
+ * @param pipe - The pipe that needs to be resolved, which can be either a simple pipe or a MetaPipe.
+ * @returns The resolved pipe instance of type `PipeInstance<T, R>`.
+ *
+ * This type is used to provide a custom mechanism for resolving pipes before they are executed in the pipeline.
+ */
+export type PipeResolver<T extends Passable, R extends Passable | T = T> = (pipe: MixedPipe) => PipeInstance<T, R>
 
 /**
  * Represents a pipe instance that contains different pipe functions.
@@ -78,4 +100,11 @@ export interface MetaPipe {
   params?: unknown[]
   /** An optional priority level of the pipe. */
   priority?: number
+}
+
+/**
+ * ConfigContextOptions.
+ */
+export interface PipelineOptions<T extends Passable, R extends Passable | T> {
+  resolver?: PipeResolver<T, R>
 }

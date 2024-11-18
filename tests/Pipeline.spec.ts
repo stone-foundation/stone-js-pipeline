@@ -1,18 +1,15 @@
 import { Pipeline } from '../src/Pipeline'
-import { PipeExecutor } from '../src/definitions'
-import { Container } from '@stone-js/service-container'
+import { Passable, PipeExecutor, PipeResolver } from '../src/definitions'
 
 describe('Pipeline Class', () => {
-  let mockContainer: Container
+  let mockResolver: PipeResolver<Passable>
 
   beforeEach(() => {
-    mockContainer = {
-      resolve: vi.fn()
-    } as unknown as Container
+    mockResolver = vi.fn()
   })
 
   it('should create a pipeline instance using the static create method', () => {
-    const pipeline = Pipeline.create(mockContainer)
+    const pipeline = Pipeline.create({ resolver: mockResolver })
     expect(pipeline).toBeInstanceOf(Pipeline)
   })
 
@@ -97,8 +94,8 @@ describe('Pipeline Class', () => {
 
   it('should throw an error if the method is missing on the pipe', async () => {
     const invalidPipe = { someOtherMethod: vi.fn() }
-    mockContainer.resolve = vi.fn().mockReturnValue(invalidPipe)
-    const pipeline = Pipeline.create<number>(mockContainer)
+    const mockResolver = vi.fn().mockReturnValue(invalidPipe)
+    const pipeline = Pipeline.create<number>({ resolver: mockResolver })
     pipeline.send(1).through(['invalidPipe'])
     await expect(async () => {
       await pipeline.thenReturn()
@@ -106,10 +103,10 @@ describe('Pipeline Class', () => {
   })
 
   it('should call the container to resolve pipes when a container is provided', async () => {
-    const pipeline = Pipeline.create<number>(mockContainer)
     const Pipe = class { handle (): number { return 1 } }
-    mockContainer.resolve = vi.fn().mockReturnValue(new Pipe())
+    const mockResolver = vi.fn().mockReturnValue(new Pipe())
+    const pipeline = Pipeline.create<number>({ resolver: mockResolver })
     await pipeline.send(1).through([Pipe]).thenReturn()
-    expect(mockContainer.resolve).toHaveBeenCalledWith(Pipe)
+    expect(mockResolver).toHaveBeenCalledWith(Pipe)
   })
 })

@@ -9,7 +9,6 @@ dist/
 public/
 dist-ssr
 *.local
-stone-js-pipeline-*
 
 # Types
 types/

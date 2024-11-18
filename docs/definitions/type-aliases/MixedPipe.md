@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.42**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.43**](../../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.42](../../modules.md) / [definitions](../README.md) / MixedPipe
+[Pipeline Documentation v0.0.43](../../modules.md) / [definitions](../README.md) / MixedPipe
 
 # Type Alias: MixedPipe
 
@@ -12,4 +12,4 @@ A mixed type that can be either a simple Pipe or a MetaPipe configuration.
 
 ## Defined in
 
-[definitions.ts:12](https://github.com/stonemjs/pipeline/blob/6aa3c0d02a33fc0aff536e37f45d10dc083a2448/src/definitions.ts#L12)
+[definitions.ts:11](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/definitions.ts#L11)
