@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
+## [0.0.44](https://github.com/stonemjs/pipeline/compare/v0.0.43...v0.0.44) (2024-11-18)
+
+
+### Features
+
+* replace container by resolver in order to remove the coupling with the container ([a70b996](https://github.com/stonemjs/pipeline/commit/a70b9963317d0ff6de7a5a4f494d580fbcb4138f))
+
 ## [0.0.43](https://github.com/stonemjs/pipeline/compare/v0.0.42...v0.0.43) (2024-11-16)
 
 
