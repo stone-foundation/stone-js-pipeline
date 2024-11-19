@@ -1,4 +1,4 @@
-**Pipeline Documentation v0.0.43** • [**Docs**](modules.md)
+**Pipeline Documentation v0.0.44** • [**Docs**](modules.md)
 
 ***
 
@@ -18,13 +18,11 @@ In summary; the pipelines take a job, process it, and forward it to the next pip
 
 ## Synopsis
 
-The `Pipeline` class is a versatile utility designed to manage and execute a series of operations on a set of input values through multiple configurable "pipes". Pipes can be either functions or class methods that process values sequentially. It allows for flexible configuration, including synchronous and asynchronous execution, custom method invocation on each pipe, and dependency injection via a container.
+The `Pipeline` class is a versatile utility designed to manage and execute a series of operations on a set of input values through multiple configurable "pipes". Pipes can be either functions or class methods that process values sequentially. It allows for flexible configuration, including synchronous and asynchronous execution, custom method invocation on each pipe, and dependency injection through a resolver or container. The new resolver mechanism can be customized using `PipelineOptions` to provide different ways of resolving pipes.
 
 ## Installation
 
-To install the `Pipeline` utility, you need to add it to your project. Assuming it’s part of a package you manage.
-
-NPM:
+The `Pipeline` library is available from the [`npm registry`](https://www.npmjs.com/) and can be installed as follows:
 
 ```bash
 npm i @stone-js/pipeline
@@ -41,6 +39,12 @@ PNPM:
 ```bash
 pnpm add @stone-js/pipeline
 ```
+
+> [!NOTE]
+> This package is Pure ESM. If you are unfamiliar with what that means or how to handle it in your project, 
+> please refer to [`this guide on Pure ESM packages`](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+
+Make sure your project setup is compatible with ESM. This might involve updating your `package.json` or using certain bundler configurations.
 
 The `Pipeline` module can only be imported via ESM import syntax:
 
@@ -90,6 +94,37 @@ In the above example:
 - `through([addOne, multiplyByTwo])` sets up the transformation functions (pipes).
 - `sync(true)` sets synchronous execution.
 - `thenReturn()` runs the pipeline, with the output being `(1 + 1) * 2 = 4`.
+
+### Configuring with `PipelineOptions` and Custom Resolver
+
+The `Pipeline` class can now be configured using an options parameter called `PipelineOptions`, which allows you to pass a custom **resolver** to resolve the pipes. This enables greater flexibility in configuring how pipes are resolved and instantiated during pipeline execution.
+
+Here's an example of how you can use the resolver to manage dependency resolution:
+
+```typescript
+import { Pipeline, MixedPipe, PipeInstance, Passable } from '@stone-js/pipeline';
+
+// Custom resolver function to resolve pipes
+const customResolver = <T extends Passable, R extends Passable | T = T>(pipe: MixedPipe): PipeInstance<T, R> => {
+  if (typeof pipe === 'function') {
+    return new pipe() as PipeInstance<T, R>;
+  }
+  throw new Error(`Cannot resolve pipe: ${String(pipe)}`);
+};
+
+// Create a new pipeline instance with the custom resolver
+const pipeline = Pipeline.create({
+  resolver: customResolver,
+});
+
+// Configure and execute the pipeline
+pipeline.send('customResolver')
+  .through([(value: string, next: (val: string) => string) => next(value.toUpperCase())])
+  .sync(true);
+
+const result = pipeline.thenReturn();
+console.log(result); // Output: "CUSTOMRESOLVER"
+```
 
 ## Usage
 
@@ -144,41 +179,41 @@ const mockApiFetch = async (value: number): Promise<number> => {
 pipeline.send(5).through([fetchData]);
 
 // Step 4: Execute the pipeline asynchronously and get the result
-const result = pipeline.thenReturn();
+const result = await pipeline.thenReturn();
 
 // Output after 1 second: 50
 console.log(result);
 ```
 
-### Dependency Injection with Container
+### Dependency Injection with Custom Resolver
 
-The `Pipeline` class also allows you to use a dependency injection container to resolve pipe dependencies dynamically.
+The new `resolver` approach allows you to manage the resolution of pipes more flexibly than using a container. Below is an updated example that uses a custom `resolver` instead of a `Container`.
 
 ```typescript
-import { Pipeline, Container } from '@stone-js/pipeline';
+import { Pipeline, PipeResolver, Passable } from '@stone-js/pipeline';
 
-// Step 1: Set up a mock container
-const container: Container = {
-  resolve: (key) => {
-    if (key === 'toUpperCase') {
-      return {
-        handle: (value: string, next: (value: string) => string) => next(value.toUpperCase()),
-      };
-    }
-    throw new Error('Unknown dependency');
-  },
-  has: (key) => key === 'toUpperCase'
+// Create a custom resolver
+const resolver: PipeResolver<Passable, Passable> = (pipe) => {
+  if (typeof pipe === 'function') {
+    return new pipe() as any; // Create an instance from the function pipe
+  }
+  throw new Error(`Pipe could not be resolved: ${pipe}`);
 };
 
-// Step 2: Create a pipeline with the container
-const pipeline = new Pipeline<string>(container);
+// Set up the pipeline with the resolver
+const pipeline = Pipeline.create({
+  resolver,
+});
 
-// Step 3: Use a string identifier to resolve pipes through the container
-pipeline.send('hello').through(['toUpperCase']).sync();
+// Use the pipeline
+pipeline.send('example').through([
+  {
+    pipe: (value: string, next: (value: string) => string) => next(value.toLowerCase()),
+  },
+]);
 
-// Step 4: Execute the pipeline
 const result = pipeline.thenReturn();
-console.log(result); // Output: "HELLO"
+console.log(result); // Output: "example"
 ```
 
 ### Customizing Execution Method
@@ -205,9 +240,63 @@ const result = pipeline.thenReturn();
 console.log(result); // Output: "enilepip"
 ```
 
-### Summary
+### Pipe Executor Order
 
-The `Pipeline` class offers a powerful and flexible way to build and manage sequences of operations on data, with support for both synchronous and asynchronous workflows, custom method invocation, and dependency injection.
+The `Pipeline` class allows you to control the order in which pipes are executed using the `priority` attribute in the `MetaPipe` configuration. Each pipe in the pipeline can be assigned an optional priority level, which determines its execution order.
+
+#### MetaPipe Configuration
+
+The `MetaPipe` interface represents a configuration object for pipes, which includes the pipe to execute, optional parameters, and a priority level:
+
+```typescript
+export interface MetaPipe {
+  /** The pipe to execute, which can be a function or a string identifier. */
+  pipe: Pipe;
+  /** An optional array of parameters to pass to the pipe. */
+  params?: unknown[];
+  /** An optional priority level of the pipe. */
+  priority?: number;
+}
+```
+
+- **`pipe`**: The pipe to execute, which can be either a function or a string identifier.
+- **`params`**: Optional parameters that are passed to the pipe during execution.
+- **`priority`**: An optional number that specifies the priority level of the pipe. Pipes are executed in order of their priority, with lower values indicating higher priority.
+
+#### Setting Pipe Priorities
+
+When adding pipes to the pipeline, you can assign different priority levels to control their execution order. By default, all pipes have the same priority level, but you can adjust these values to ensure certain operations are performed before others.
+
+For example:
+
+```typescript
+import { Pipeline, MetaPipe } from '@stone-js/pipeline';
+
+// Create pipes with different priority levels
+const pipe1: MetaPipe = {
+  pipe: (value: number, next: (value: number) => number) => next(value + 1),
+  priority: 1, // High priority, executed first
+};
+
+const pipe2: MetaPipe = {
+  pipe: (value: number, next: (value: number) => number) => next(value * 2),
+  priority: 2, // Lower priority, executed after pipe1
+};
+
+// Create a new pipeline and configure it with prioritized pipes
+const pipeline = new Pipeline<number>();
+pipeline.send(1).through([pipe2, pipe1]).sync(true);
+
+// Execute the pipeline
+const result = pipeline.thenReturn();
+console.log(result); // Output: 4 (1 + 1, then multiplied by 2)
+```
+
+In this example, `pipe1` is executed first because it has a higher priority (`priority: 1`), while `pipe2` is executed afterward (`priority: 2`). By default, if no priority is provided, all pipes are treated equally and executed in the order they are added.
+
+## Summary
+
+The `Pipeline` class now offers additional flexibility in how you manage the lifecycle of the pipes. You can provide a custom **resolver** to determine how each pipe is instantiated or resolved before it is executed. This allows for both dependency injection and straightforward function-based pipes, making it suitable for a wide variety of use cases.
 
 ## API documentation
 

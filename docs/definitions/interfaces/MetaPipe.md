@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.43**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.44**](../../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.43](../../modules.md) / [definitions](../README.md) / MetaPipe
+[Pipeline Documentation v0.0.44](../../modules.md) / [definitions](../README.md) / MetaPipe
 
 # Interface: MetaPipe
 
@@ -20,7 +20,7 @@ An optional array of parameters to pass to the pipe.
 
 #### Defined in
 
-[definitions.ts:100](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/definitions.ts#L100)
+[definitions.ts:100](https://github.com/stonemjs/pipeline/blob/cb206a59f3858db33e7d57a2dba74356bb8f0bc4/src/definitions.ts#L100)
 
 ***
 
@@ -32,7 +32,7 @@ The pipe to execute, which can be a function or a string identifier.
 
 #### Defined in
 
-[definitions.ts:98](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/definitions.ts#L98)
+[definitions.ts:98](https://github.com/stonemjs/pipeline/blob/cb206a59f3858db33e7d57a2dba74356bb8f0bc4/src/definitions.ts#L98)
 
 ***
 
@@ -44,4 +44,4 @@ An optional priority level of the pipe.
 
 #### Defined in
 
-[definitions.ts:102](https://github.com/stonemjs/pipeline/blob/b0cce491d02e84a282eddf56874b02f5e8e7e66d/src/definitions.ts#L102)
+[definitions.ts:102](https://github.com/stonemjs/pipeline/blob/cb206a59f3858db33e7d57a2dba74356bb8f0bc4/src/definitions.ts#L102)
