@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
+## [0.0.45](https://github.com/stonemjs/pipeline/compare/v0.0.44...v0.0.45) (2024-11-22)
+
+
+### Miscellaneous Chores
+
+* allow  to return undefined ([5c1b6a7](https://github.com/stonemjs/pipeline/commit/5c1b6a7daaef488c81e5614b0853b63dc2e8a711))
+
 ## [0.0.44](https://github.com/stonemjs/pipeline/compare/v0.0.43...v0.0.44) (2024-11-18)
 
 
