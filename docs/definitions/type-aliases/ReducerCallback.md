@@ -38,4 +38,4 @@ The combined executor function.
 
 ## Defined in
 
-[definitions.ts:64](https://github.com/stonemjs/pipeline/blob/cb206a59f3858db33e7d57a2dba74356bb8f0bc4/src/definitions.ts#L64)
+[definitions.ts:64](https://github.com/stonemjs/pipeline/blob/d0c57676782f8e1afbbfb26e407906157446f32f/src/definitions.ts#L64)

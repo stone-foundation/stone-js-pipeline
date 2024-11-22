@@ -34,4 +34,4 @@ The result of the execution, which could be a synchronous or asynchronous respon
 
 ## Defined in
 
-[definitions.ts:41](https://github.com/stonemjs/pipeline/blob/cb206a59f3858db33e7d57a2dba74356bb8f0bc4/src/definitions.ts#L41)
+[definitions.ts:41](https://github.com/stonemjs/pipeline/blob/d0c57676782f8e1afbbfb26e407906157446f32f/src/definitions.ts#L41)

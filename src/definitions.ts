@@ -69,11 +69,11 @@ export type ReducerCallback<T extends Passable, R extends Passable | T = T> = (p
  * @typeParam T - The type of the passable object in the pipeline.
  * @typeParam R - The type of the return value from the resolved pipe, which defaults to `T`.
  * @param pipe - The pipe that needs to be resolved, which can be either a simple pipe or a MetaPipe.
- * @returns The resolved pipe instance of type `PipeInstance<T, R>`.
+ * @returns The resolved pipe instance of type `PipeInstance<T, R> | undefined`.
  *
  * This type is used to provide a custom mechanism for resolving pipes before they are executed in the pipeline.
  */
-export type PipeResolver<T extends Passable, R extends Passable | T = T> = (pipe: MixedPipe) => PipeInstance<T, R>
+export type PipeResolver<T extends Passable, R extends Passable | T = T> = (pipe: Pipe) => PipeInstance<T, R> | undefined
 
 /**
  * Represents a pipe instance that contains different pipe functions.
