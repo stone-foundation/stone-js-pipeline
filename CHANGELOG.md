@@ -6,6 +6,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## Unreleased
 
+## [0.0.46](https://github.com/stonemjs/pipeline/compare/v0.0.45...v0.0.46) (2024-11-25)
+
+
+### Miscellaneous Chores
+
+* add custom pipeline error ([f7cff0e](https://github.com/stonemjs/pipeline/commit/f7cff0ea73c3c5bcb048516c676c2bed51eb4e9d))
+
 ## [0.0.45](https://github.com/stonemjs/pipeline/compare/v0.0.44...v0.0.45) (2024-11-22)
 
 
