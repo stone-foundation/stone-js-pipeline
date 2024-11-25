@@ -20,7 +20,7 @@ An optional array of parameters to pass to the pipe.
 
 #### Defined in
 
-[definitions.ts:100](https://github.com/stonemjs/pipeline/blob/d0c57676782f8e1afbbfb26e407906157446f32f/src/definitions.ts#L100)
+[definitions.ts:100](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/definitions.ts#L100)
 
 ***
 
@@ -32,7 +32,7 @@ The pipe to execute, which can be a function or a string identifier.
 
 #### Defined in
 
-[definitions.ts:98](https://github.com/stonemjs/pipeline/blob/d0c57676782f8e1afbbfb26e407906157446f32f/src/definitions.ts#L98)
+[definitions.ts:98](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/definitions.ts#L98)
 
 ***
 
@@ -44,4 +44,4 @@ An optional priority level of the pipe.
 
 #### Defined in
 
-[definitions.ts:102](https://github.com/stonemjs/pipeline/blob/d0c57676782f8e1afbbfb26e407906157446f32f/src/definitions.ts#L102)
+[definitions.ts:102](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/definitions.ts#L102)

@@ -13,4 +13,4 @@ It can be an object, a string, a number, or a generic record object.
 
 ## Defined in
 
-[definitions.ts:17](https://github.com/stonemjs/pipeline/blob/d0c57676782f8e1afbbfb26e407906157446f32f/src/definitions.ts#L17)
+[definitions.ts:17](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/definitions.ts#L17)

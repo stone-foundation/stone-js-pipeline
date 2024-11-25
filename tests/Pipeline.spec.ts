@@ -1,4 +1,5 @@
 import { Pipeline } from '../src/Pipeline'
+import { PipelineError } from '../src/PipelineError'
 import { Passable, PipeExecutor, PipeResolver } from '../src/definitions'
 
 describe('Pipeline Class', () => {
@@ -89,7 +90,7 @@ describe('Pipeline Class', () => {
     const pipeline = Pipeline.create<number>()
     await expect(async () => {
       await pipeline.send(1).through(['invalidPipe']).thenReturn()
-    }).rejects.toThrow(TypeError)
+    }).rejects.toThrow(PipelineError)
   })
 
   it('should throw an error if the method is missing on the pipe', async () => {
@@ -99,7 +100,7 @@ describe('Pipeline Class', () => {
     pipeline.send(1).through(['invalidPipe'])
     await expect(async () => {
       await pipeline.thenReturn()
-    }).rejects.toThrow(TypeError)
+    }).rejects.toThrow(PipelineError)
   })
 
   it('should call the container to resolve pipes when a container is provided', async () => {

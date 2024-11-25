@@ -8,3 +8,4 @@
 
 - [definitions](definitions/README.md)
 - [Pipeline](Pipeline/README.md)
+- [PipelineError](PipelineError/README.md)

@@ -1,3 +1,4 @@
+import { PipelineError } from './PipelineError'
 import { MetaPipe, MixedPipe, Passable, Pipe, PipeArguments, PipeExecutor, PipelineOptions, PipeResolver, ReducerCallback } from './definitions'
 
 /**
@@ -181,7 +182,7 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
    * @param currentPipe - The current pipe to execute (class or service alias string).
    * @param args - The arguments for the pipe.
    * @returns The result of the pipe execution.
-   * @throws TypeError If the pipe cannot be resolved or the method is missing.
+   * @throws PipelineError If the pipe cannot be resolved or the method is missing.
    */
   private executePipe (currentPipe: Pipe, args: PipeArguments<T, R>): R {
     let instance = (typeof this.resolver === 'function') ? this.resolver(currentPipe) : undefined
@@ -192,7 +193,7 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
       }
 
       if (instance === undefined) {
-        throw new TypeError(`Cannot resolve this pipe ${String(currentPipe)}.`)
+        throw new PipelineError(`Cannot resolve this pipe ${String(currentPipe)}.`)
       }
     }
 
@@ -218,11 +219,11 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
    *
    * @param instance - The instance to validate.
    * @param currentPipe - The current pipe being executed.
-   * @throws {TypeError} If the method does not exist on the instance.
+   * @throws {PipelineError} If the method does not exist on the instance.
    */
   private validatePipeMethod (instance: any, currentPipe: Pipe): void {
     if (typeof instance[this.method] !== 'function') {
-      throw new TypeError(
+      throw new PipelineError(
         `No method with this name(${this.method}) exists in this constructor(${currentPipe.constructor.name})`
       )
     }
