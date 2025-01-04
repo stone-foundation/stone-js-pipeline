@@ -2,8 +2,6 @@
 
 All notable changes to the "Stone.js pipeline" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
 ## Unreleased
 
 ## [0.0.46](https://github.com/stonemjs/pipeline/compare/v0.0.45...v0.0.46) (2024-11-25)

@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/l/@stone-js/pipeline)](https://opensource.org/licenses/Apache-2.0)
 [![npm](https://img.shields.io/npm/v/@stone-js/pipeline)](https://www.npmjs.com/package/@stone-js/pipeline)
 [![npm](https://img.shields.io/npm/dm/@stone-js/pipeline)](https://www.npmjs.com/package/@stone-js/pipeline)
-![Maintenance](https://img.shields.io/maintenance/yes/2024)
+![Maintenance](https://img.shields.io/maintenance/yes/2025)
 [![Publish Package to npmjs](https://github.com/stonemjs/pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/stonemjs/pipeline/actions/workflows/release.yml)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 

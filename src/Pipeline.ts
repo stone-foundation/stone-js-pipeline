@@ -38,7 +38,7 @@ export class Pipeline<T extends Passable, R extends Passable | T = T> {
    * @param options - Optional Pipeline options.
    * @returns The pipeline instance.
    */
-  static create<T extends Passable, R extends Passable | T = T> (options?: PipelineOptions<T, R>): Pipeline<T, R> {
+  static create<T extends Passable, R extends Passable | T = T>(options?: PipelineOptions<T, R>): Pipeline<T, R> {
     return new this(options)
   }
 

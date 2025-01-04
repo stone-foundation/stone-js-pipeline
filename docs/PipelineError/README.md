@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.44**](../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.44](../modules.md) / PipelineError
+[Pipeline Documentation v0.0.46](../modules.md) / PipelineError
 
 # PipelineError
 

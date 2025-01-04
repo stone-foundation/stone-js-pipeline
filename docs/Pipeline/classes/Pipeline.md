@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.44**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.44](../../modules.md) / [Pipeline](../README.md) / Pipeline
+[Pipeline Documentation v0.0.46](../../modules.md) / [Pipeline](../README.md) / Pipeline
 
 # Class: Pipeline\<T, R\>
 
@@ -41,7 +41,7 @@ Optional Pipeline options.
 
 #### Defined in
 
-[Pipeline.ts:50](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L50)
+[Pipeline.ts:50](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L50)
 
 ## Methods
 
@@ -65,7 +65,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:66](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L66)
+[Pipeline.ts:66](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L66)
 
 ***
 
@@ -89,7 +89,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:103](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L103)
+[Pipeline.ts:103](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L103)
 
 ***
 
@@ -113,7 +113,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:77](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L77)
+[Pipeline.ts:77](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L77)
 
 ***
 
@@ -137,7 +137,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:124](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L124)
+[Pipeline.ts:124](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L124)
 
 ***
 
@@ -161,7 +161,7 @@ The result of the pipeline, either synchronously or as a Promise.
 
 #### Defined in
 
-[Pipeline.ts:135](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L135)
+[Pipeline.ts:135](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L135)
 
 ***
 
@@ -179,7 +179,7 @@ The result of the pipeline, either synchronously or as a Promise.
 
 #### Defined in
 
-[Pipeline.ts:149](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L149)
+[Pipeline.ts:149](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L149)
 
 ***
 
@@ -203,7 +203,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:88](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L88)
+[Pipeline.ts:88](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L88)
 
 ***
 
@@ -227,7 +227,7 @@ The current Pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:113](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L113)
+[Pipeline.ts:113](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L113)
 
 ***
 
@@ -257,4 +257,4 @@ The pipeline instance.
 
 #### Defined in
 
-[Pipeline.ts:41](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/Pipeline.ts#L41)
+[Pipeline.ts:41](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/Pipeline.ts#L41)

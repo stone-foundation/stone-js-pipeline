@@ -1,8 +1,8 @@
-[**Pipeline Documentation v0.0.44**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../../README.md) • **Docs**
 
 ***
 
-[Pipeline Documentation v0.0.44](../../modules.md) / [definitions](../README.md) / Pipe
+[Pipeline Documentation v0.0.46](../../modules.md) / [definitions](../README.md) / Pipe
 
 # Type Alias: Pipe
 
@@ -14,4 +14,4 @@ A pipe can either be a function that performs an action or a string identifier t
 
 ## Defined in
 
-[definitions.ts:6](https://github.com/stonemjs/pipeline/blob/5c1b6a7daaef488c81e5614b0853b63dc2e8a711/src/definitions.ts#L6)
+[definitions.ts:6](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/definitions.ts#L6)
