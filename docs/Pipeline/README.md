@@ -1,13 +1,11 @@
-[**Pipeline Documentation v0.0.46**](../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../README.md)
 
 ***
 
-[Pipeline Documentation v0.0.46](../modules.md) / Pipeline
+[Pipeline Documentation](../modules.md) / Pipeline
 
 # Pipeline
 
-## Index
-
-### Classes
+## Classes
 
 - [Pipeline](classes/Pipeline.md)

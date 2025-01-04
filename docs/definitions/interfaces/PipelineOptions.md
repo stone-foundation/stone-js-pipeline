@@ -1,10 +1,12 @@
-[**Pipeline Documentation v0.0.46**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../../README.md)
 
 ***
 
-[Pipeline Documentation v0.0.46](../../modules.md) / [definitions](../README.md) / PipelineOptions
+[Pipeline Documentation](../../modules.md) / [definitions](../README.md) / PipelineOptions
 
 # Interface: PipelineOptions\<T, R\>
+
+Defined in: [definitions.ts:108](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/definitions.ts#L108)
 
 ConfigContextOptions.
 
@@ -20,6 +22,4 @@ ConfigContextOptions.
 
 > `optional` **resolver**: [`PipeResolver`](../type-aliases/PipeResolver.md)\<`T`, `R`\>
 
-#### Defined in
-
-[definitions.ts:109](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/definitions.ts#L109)
+Defined in: [definitions.ts:109](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/definitions.ts#L109)

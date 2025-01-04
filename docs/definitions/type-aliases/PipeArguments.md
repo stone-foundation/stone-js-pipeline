@@ -1,12 +1,14 @@
-[**Pipeline Documentation v0.0.46**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../../README.md)
 
 ***
 
-[Pipeline Documentation v0.0.46](../../modules.md) / [definitions](../README.md) / PipeArguments
+[Pipeline Documentation](../../modules.md) / [definitions](../README.md) / PipeArguments
 
 # Type Alias: PipeArguments\<T, R\>
 
 > **PipeArguments**\<`T`, `R`\>: (`T` \| [`PipeExecutor`](PipeExecutor.md)\<`T`, `R`\> \| `unknown`[])[]
+
+Defined in: [definitions.ts:30](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/definitions.ts#L30)
 
 Represents the arguments passed to a pipe execution function.
 
@@ -24,7 +26,3 @@ The type of the passable object.
 • **R** *extends* [`Passable`](Passable.md) \| `T` = `T`
 
 The type of the return value from the pipeline execution, defaulting to `T`.
-
-## Defined in
-
-[definitions.ts:30](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/definitions.ts#L30)

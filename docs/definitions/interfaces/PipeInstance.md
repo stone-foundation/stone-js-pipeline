@@ -1,10 +1,12 @@
-[**Pipeline Documentation v0.0.46**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../../README.md)
 
 ***
 
-[Pipeline Documentation v0.0.46](../../modules.md) / [definitions](../README.md) / PipeInstance
+[Pipeline Documentation](../../modules.md) / [definitions](../README.md) / PipeInstance
 
 # Interface: PipeInstance\<T, R\>
+
+Defined in: [definitions.ts:87](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/definitions.ts#L87)
 
 Represents a pipe instance that contains different pipe functions.
 
@@ -23,4 +25,4 @@ The keys represent function names, and the values are functions that take specif
 
 ## Indexable
 
- \[`key`: `string`\]: (...`args`) => `R`
+\[`key`: `string`\]: (...`args`) => `R`

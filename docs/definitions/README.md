@@ -1,20 +1,18 @@
-[**Pipeline Documentation v0.0.46**](../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../README.md)
 
 ***
 
-[Pipeline Documentation v0.0.46](../modules.md) / definitions
+[Pipeline Documentation](../modules.md) / definitions
 
 # definitions
 
-## Index
-
-### Interfaces
+## Interfaces
 
 - [MetaPipe](interfaces/MetaPipe.md)
 - [PipeInstance](interfaces/PipeInstance.md)
 - [PipelineOptions](interfaces/PipelineOptions.md)
 
-### Type Aliases
+## Type Aliases
 
 - [MixedPipe](type-aliases/MixedPipe.md)
 - [NextPipe](type-aliases/NextPipe.md)

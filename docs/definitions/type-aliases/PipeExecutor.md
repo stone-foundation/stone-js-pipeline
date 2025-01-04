@@ -1,12 +1,14 @@
-[**Pipeline Documentation v0.0.46**](../../README.md) • **Docs**
+[**Pipeline Documentation v0.0.46**](../../README.md)
 
 ***
 
-[Pipeline Documentation v0.0.46](../../modules.md) / [definitions](../README.md) / PipeExecutor
+[Pipeline Documentation](../../modules.md) / [definitions](../README.md) / PipeExecutor
 
 # Type Alias: PipeExecutor()\<T, R\>
 
 > **PipeExecutor**\<`T`, `R`\>: (...`passable`) => `R` \| `Promise`\<`R`\>
+
+Defined in: [definitions.ts:41](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/definitions.ts#L41)
 
 Pipe Executor function type.
 
@@ -22,7 +24,9 @@ The type of the return value from the pipeline execution, defaulting to `T`.
 
 ## Parameters
 
-• ...**passable**: `T`[]
+### passable
+
+...`T`[]
 
 The passable objects being sent through the pipeline.
 
@@ -31,7 +35,3 @@ The passable objects being sent through the pipeline.
 `R` \| `Promise`\<`R`\>
 
 The result of the execution, which could be a synchronous or asynchronous response.
-
-## Defined in
-
-[definitions.ts:41](https://github.com/stonemjs/pipeline/blob/c07ce1382a041850d8a6e0a7b2ea9d4b5c88fabb/src/definitions.ts#L41)
