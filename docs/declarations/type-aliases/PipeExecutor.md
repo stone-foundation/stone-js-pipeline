@@ -2,23 +2,23 @@
 
 ***
 
-[Pipeline Documentation](../../modules.md) / [definitions](../README.md) / PipeExecutor
+[Pipeline Documentation](../../modules.md) / [declarations](../README.md) / PipeExecutor
 
 # Type Alias: PipeExecutor()\<T, R\>
 
-> **PipeExecutor**\<`T`, `R`\>: (...`passable`) => `R` \| `Promise`\<`R`\>
+> **PipeExecutor**\<`T`, `R`\>: (`passable`) => `R` \| `Promise`\<`R`\>
 
-Defined in: [definitions.ts:41](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/definitions.ts#L41)
+Defined in: [declarations.ts:42](https://github.com/stonemjs/pipeline/blob/c8a1fcbfdda4004779e43e603ed49dbe9ca9323f/src/declarations.ts#L42)
 
 Pipe Executor function type.
 
 ## Type Parameters
 
-• **T** *extends* [`Passable`](Passable.md)
+• **T** = `unknown`
 
 The type of the passable object.
 
-• **R** *extends* [`Passable`](Passable.md) \| `T` = `T`
+• **R** = `T`
 
 The type of the return value from the pipeline execution, defaulting to `T`.
 
@@ -26,7 +26,7 @@ The type of the return value from the pipeline execution, defaulting to `T`.
 
 ### passable
 
-...`T`[]
+`T`
 
 The passable objects being sent through the pipeline.
 

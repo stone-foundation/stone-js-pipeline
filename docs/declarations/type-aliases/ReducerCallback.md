@@ -2,25 +2,27 @@
 
 ***
 
-[Pipeline Documentation](../../modules.md) / [definitions](../README.md) / ReducerCallback
+[Pipeline Documentation](../../modules.md) / [declarations](../README.md) / ReducerCallback
 
-# Type Alias: ReducerCallback()\<T, R\>
+# Type Alias: ReducerCallback()\<T, R, Args\>
 
-> **ReducerCallback**\<`T`, `R`\>: (`previousPipeExecutor`, `currentPipe`) => [`PipeExecutor`](PipeExecutor.md)\<`T`, `R`\>
+> **ReducerCallback**\<`T`, `R`, `Args`\>: (`previousPipeExecutor`, `currentPipe`) => [`PipeExecutor`](PipeExecutor.md)\<`T`, `R`\>
 
-Defined in: [definitions.ts:64](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/definitions.ts#L64)
+Defined in: [declarations.ts:65](https://github.com/stonemjs/pipeline/blob/c8a1fcbfdda4004779e43e603ed49dbe9ca9323f/src/declarations.ts#L65)
 
 Reducer callback function type used to build a sequence of pipe executions.
 
 ## Type Parameters
 
-• **T** *extends* [`Passable`](Passable.md)
+• **T** = `unknown`
 
 The type of the passable object.
 
-• **R** *extends* [`Passable`](Passable.md) \| `T` = `T`
+• **R** = `T`
 
 The type of the return value from the pipeline execution, defaulting to `T`.
+
+• **Args** *extends* `any`[] = `any`[]
 
 ## Parameters
 
@@ -32,7 +34,7 @@ The executor from the previous step in the pipeline.
 
 ### currentPipe
 
-[`Pipe`](Pipe.md)
+[`MetaPipe`](../interfaces/MetaPipe.md)\<`T`, `R`, `Args`\>
 
 The current pipe being added to the sequence.
 
