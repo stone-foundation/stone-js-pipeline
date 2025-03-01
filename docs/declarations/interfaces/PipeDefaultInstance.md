@@ -6,7 +6,7 @@
 
 # Interface: PipeDefaultInstance\<T, R\>
 
-Defined in: [declarations.ts:106](https://github.com/stonemjs/pipeline/blob/c8a1fcbfdda4004779e43e603ed49dbe9ca9323f/src/declarations.ts#L106)
+Defined in: [declarations.ts:112](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L112)
 
 Represents a pipe instance that contains a default pipe function.
 
@@ -29,4 +29,4 @@ The key is the `handle` property, which is a function that takes specific argume
 
 > **handle**: [`FunctionalPipe`](../type-aliases/FunctionalPipe.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:107](https://github.com/stonemjs/pipeline/blob/c8a1fcbfdda4004779e43e603ed49dbe9ca9323f/src/declarations.ts#L107)
+Defined in: [declarations.ts:113](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L113)

@@ -1,6 +1,23 @@
+import {
+  isString,
+  isFunction,
+  isClassPipe,
+  isFactoryPipe
+} from './utils'
+import {
+  HookName,
+  MetaPipe,
+  MixedPipe,
+  Promiseable,
+  PipeExecutor,
+  PipelineHook,
+  PipeResolver,
+  PipelineOptions,
+  ReducerCallback,
+  PipeCustomInstance,
+  PipelineHookListener
+} from './declarations'
 import { PipelineError } from './PipelineError'
-import { isClassPipe, isFactoryPipe, isFunction, isString } from './utils'
-import { MetaPipe, MixedPipe, PipeCustomInstance, PipeExecutor, PipelineOptions, PipeResolver, ReducerCallback } from './declarations'
 
 /**
  * Class representing a Pipeline.
@@ -27,6 +44,9 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
   /** The sorted metadata pipes that will be executed */
   private sortedMetaPipes: Array<MetaPipe<T, R, Args>>
 
+  /** The pipeline hooks */
+  private readonly hooks: PipelineHook<T, R, Args>
+
   /** The resolver function used to resolve pipes before they are executed in the pipeline. */
   private readonly resolver?: PipeResolver<T, R>
 
@@ -51,6 +71,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
     this.sortedMetaPipes = []
     this._defaultPriority = 10
     this.resolver = options?.resolver
+    this.hooks = options?.hooks ?? {} as any
   }
 
   /**
@@ -127,12 +148,26 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
   }
 
   /**
+   * Add a hook to the pipeline.
+   *
+   * @param name - The name of the hook.
+   * @param listener - The hook listener function.
+   * @returns The current Pipeline instance.
+   */
+  on (name: HookName, listener: PipelineHookListener<T, R, Args> | Array<PipelineHookListener<T, R, Args>>): this {
+    this.hooks[name] ??= []
+    this.hooks[name] = this.hooks[name].concat(listener)
+
+    return this
+  }
+
+  /**
    * Run the pipeline with a final destination callback.
    *
    * @param destination - The final function to execute.
    * @returns The result of the pipeline, either synchronously or as a Promise.
    */
-  then (destination: PipeExecutor<T, R>): R | Promise<R> {
+  then (destination: PipeExecutor<T, R>): Promiseable<R> {
     if (this.passable === undefined) {
       throw new PipelineError('No passable object has been set for this pipeline.')
     }
@@ -150,7 +185,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
    *
    * @returns The result of the pipeline, either synchronously or as a Promise.
    */
-  thenReturn (): R | Promise<R> {
+  thenReturn (): Promiseable<R> {
     return this.then((passable) => passable as unknown as R)
   }
 
@@ -162,7 +197,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
   private asyncReducer (): ReducerCallback<T, R, Args> {
     return (previousPipeExecutor: PipeExecutor<T, R>, currentPipe: MetaPipe<T, R, Args>): PipeExecutor<T, R> => {
       return async (passable: T): Promise<R> => {
-        return await this.executePipe(currentPipe, passable, previousPipeExecutor)
+        return await this.executeAsyncPipe(currentPipe, passable, previousPipeExecutor)
       }
     }
   }
@@ -175,9 +210,30 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
   private reducer (): ReducerCallback<T, R, Args> {
     return (previousPipeExecutor: PipeExecutor<T, R>, currentPipe: MetaPipe<T, R, Args>): PipeExecutor<T, R> => {
       return (passable: T): R => {
-        return this.executePipe(currentPipe, passable, previousPipeExecutor) as R
+        return this.executePipe(currentPipe, passable, previousPipeExecutor)
       }
     }
+  }
+
+  /**
+   * Resolve and execute async pipe.
+   *
+   * @param currentPipe - The current pipe to execute (class or service alias string).
+   * @param passable - The passable object to send through the pipe.
+   * @param previousPipeExecutor - The previous pipe executor in the sequence.
+   * @returns The result of the pipe execution.
+   * @throws PipelineError If the pipe cannot be resolved or the method is missing.
+   */
+  private async executeAsyncPipe (currentPipe: MetaPipe<T, R, Args>, passable: T, previousPipeExecutor: PipeExecutor<T, R>): Promise<R> {
+    const instance = this.resolvePipe(currentPipe)
+
+    await this.executeAsyncHooks('onProcessingPipe', currentPipe, instance, passable)
+
+    const result = await instance[this.method](passable, previousPipeExecutor, ...(currentPipe.params ?? []))
+
+    await this.executeAsyncHooks('onPipeProcessed', currentPipe, instance, passable)
+
+    return result
   }
 
   /**
@@ -189,7 +245,26 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
    * @returns The result of the pipe execution.
    * @throws PipelineError If the pipe cannot be resolved or the method is missing.
    */
-  private executePipe (currentPipe: MetaPipe<T, R, Args>, passable: T, previousPipeExecutor: PipeExecutor<T, R>): R | Promise<R> {
+  private executePipe (currentPipe: MetaPipe<T, R, Args>, passable: T, previousPipeExecutor: PipeExecutor<T, R>): R {
+    const instance = this.resolvePipe(currentPipe)
+
+    this.executeHooks('onProcessingPipe', currentPipe, instance, passable)
+
+    const result = instance[this.method](passable, previousPipeExecutor, ...(currentPipe.params ?? []))
+
+    this.executeHooks('onPipeProcessed', currentPipe, instance, passable)
+
+    return result
+  }
+
+  /**
+   * Resolve pipe.
+   *
+   * @param currentPipe - The current pipe to execute (class or service alias string).
+   * @returns The resolved pipe instance.
+   * @throws PipelineError If the pipe cannot be resolved or the method is missing.
+   */
+  private resolvePipe (currentPipe: MetaPipe<T, R, Args>): PipeCustomInstance<T, R> {
     let instance = (isFunction(this.resolver) ? this.resolver(currentPipe) : undefined) as (PipeCustomInstance<T, R> | undefined)
 
     if (instance === undefined) {
@@ -204,7 +279,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
 
     this.validatePipeMethod(instance, currentPipe)
 
-    return instance[this.method](passable, previousPipeExecutor, ...(currentPipe.params ?? []))
+    return instance
   }
 
   /**
@@ -238,6 +313,44 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
       throw new PipelineError(
         `No method with this name(${this.method}) exists in this constructor(${currentPipe.module.constructor.name})`
       )
+    }
+  }
+
+  /**
+   * Execute lifecycle async hooks.
+   *
+   * @param name - The hook's name.
+   * @param pipe - The current pipe instance.
+   */
+  private async executeAsyncHooks (
+    name: HookName,
+    pipe: MetaPipe<T, R, Args>,
+    instance: PipeCustomInstance<T, R>,
+    passable: T
+  ): Promise<void> {
+    if (Array.isArray(this.hooks[name])) {
+      for (const listener of this.hooks[name]) {
+        await listener({ passable, instance, pipe, pipes: this.sortedMetaPipes })
+      }
+    }
+  }
+
+  /**
+   * Execute lifecycle hooks.
+   *
+   * @param name - The hook's name.
+   * @param pipe - The current pipe instance.
+   */
+  private executeHooks (
+    name: HookName,
+    pipe: MetaPipe<T, R, Args>,
+    instance: PipeCustomInstance<T, R>,
+    passable: T
+  ): void {
+    if (Array.isArray(this.hooks[name])) {
+      for (const listener of this.hooks[name]) {
+        listener({ passable, instance, pipe, pipes: this.sortedMetaPipes }) as never
+      }
     }
   }
 }

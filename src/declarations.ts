@@ -1,4 +1,9 @@
 /**
+ * Represents a Promiseable type.
+ */
+export type Promiseable<T> = T | Promise<T>
+
+/**
  * A string type that represents a pipe alias.
  */
 export type PipeAlias = string
@@ -11,7 +16,7 @@ export type PipeClass<T = unknown, R = T, Args extends any[] = any[]> = new (...
 /**
  * A function type that represents a pipe.
  */
-export type FunctionalPipe<T = unknown, R = T> = (passable: T, next: PipeExecutor<T, R>, ...params: any[]) => R | Promise<R>
+export type FunctionalPipe<T = unknown, R = T> = (passable: T, next: PipeExecutor<T, R>, ...params: any[]) => Promiseable<R>
 
 /**
  * A factory function type that represents a pipe.
@@ -39,7 +44,7 @@ export type MixedPipe<T = unknown, R = T, Args extends any[] = any[]> = PipeType
  * @template T - The type of the passable object.
  * @template R - The type of the return value from the pipeline execution, defaulting to `T`.
  */
-export type PipeExecutor<T = unknown, R = T> = (passable: T) => R | Promise<R>
+export type PipeExecutor<T = unknown, R = T> = (passable: T) => Promiseable<R>
 
 /**
  * Next Pipe Executor function type.
@@ -80,6 +85,7 @@ export type PipeResolver<T = unknown, R = T, Args extends any[] = any[]> = (pipe
  * ConfigContextOptions.
  */
 export interface PipelineOptions<T = unknown, R = T, Args extends any[] = any[]> {
+  hooks?: PipelineHook<T, R, Args>
   resolver?: PipeResolver<T, R, Args>
 }
 
@@ -139,3 +145,34 @@ export interface MetaPipe<T = unknown, R = T, Args extends any[] = any[]> {
   /** An optional flag indicating whether the pipe is a factory. */
   isFactory?: boolean
 }
+
+/**
+ * HookName Type.
+ */
+export type HookName = 'onProcessingPipe' | 'onPipeProcessed'
+
+/**
+ * Hook Type.
+ *
+ * Represents a hook that can either be synchronous or asynchronous.
+ */
+export type PipelineHook<T = unknown, R = T, Args extends any[] = any[]> = Record<HookName, Array<PipelineHookListener<T, R, Args>>>
+
+/**
+ * PipelineHookContext Type.
+ */
+export interface PipelineHookContext<T = unknown, R = T, Args extends any[] = any[]> {
+  passable: T
+  pipe: PipeCustomInstance<T, R>
+  instance: PipeCustomInstance<T, R>
+  pipes: Array<MetaPipe<T, R, Args>>
+}
+
+/**
+ * PipelineHookListener Type.
+ *
+ * Represents a listener hook that can either be synchronous or asynchronous.
+ */
+export type PipelineHookListener<T = unknown, R = T, Args extends any[] = any[]> = (
+  context: PipelineHookContext<T, R, Args>
+) => Promiseable<void>

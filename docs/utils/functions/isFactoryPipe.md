@@ -8,7 +8,7 @@
 
 > **isFactoryPipe**\<`T`, `R`, `Args`\>(`metaPipe`): `metaPipe is { module: FactoryPipe<T, R, Args> }`
 
-Defined in: [utils.ts:84](https://github.com/stonemjs/pipeline/blob/c8a1fcbfdda4004779e43e603ed49dbe9ca9323f/src/utils.ts#L84)
+Defined in: [utils.ts:84](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/utils.ts#L84)
 
 Check if the meta pipe is a factory pipe.
 

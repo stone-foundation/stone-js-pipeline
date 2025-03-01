@@ -6,9 +6,9 @@
 
 # Type Alias: PipeExecutor()\<T, R\>
 
-> **PipeExecutor**\<`T`, `R`\>: (`passable`) => `R` \| `Promise`\<`R`\>
+> **PipeExecutor**\<`T`, `R`\>: (`passable`) => [`Promiseable`](Promiseable.md)\<`R`\>
 
-Defined in: [declarations.ts:42](https://github.com/stonemjs/pipeline/blob/c8a1fcbfdda4004779e43e603ed49dbe9ca9323f/src/declarations.ts#L42)
+Defined in: [declarations.ts:47](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L47)
 
 Pipe Executor function type.
 
@@ -32,6 +32,6 @@ The passable objects being sent through the pipeline.
 
 ## Returns
 
-`R` \| `Promise`\<`R`\>
+[`Promiseable`](Promiseable.md)\<`R`\>
 
 The result of the execution, which could be a synchronous or asynchronous response.
