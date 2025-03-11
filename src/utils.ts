@@ -60,7 +60,7 @@ export const isFunctionPipe = <T = unknown, R = T, Args extends any[] = any[]>(
 export const isAliasPipe = <T = unknown, R = T, Args extends any[] = any[]>(
   metaPipe: MetaPipe<T, R, Args>
 ): metaPipe is { module: PipeAlias } => {
-  return metaPipe.isAlias === true && isString(metaPipe.module)
+  return metaPipe.isAlias === true || isString(metaPipe.module)
 }
 
 /**

@@ -8,7 +8,7 @@
 
 > **isAliasPipe**\<`T`, `R`, `Args`\>(`metaPipe`): `metaPipe is { module: string }`
 
-Defined in: [utils.ts:60](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/utils.ts#L60)
+Defined in: [utils.ts:60](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/utils.ts#L60)
 
 Check if the meta pipe is an alias pipe.
 

@@ -6,7 +6,7 @@
 
 # Interface: MetaPipe\<T, R, Args\>
 
-Defined in: [declarations.ts:134](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L134)
+Defined in: [declarations.ts:134](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L134)
 
 Represents a MetaPipe configuration item, with a pipe, parameters, and priority level.
 
@@ -26,7 +26,7 @@ A configuration object used for managing pipes in the pipeline.
 
 > `optional` **isAlias**: `boolean`
 
-Defined in: [declarations.ts:144](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L144)
+Defined in: [declarations.ts:144](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L144)
 
 An optional flag indicating whether the pipe is a container alias.
 
@@ -36,7 +36,7 @@ An optional flag indicating whether the pipe is a container alias.
 
 > `optional` **isClass**: `boolean`
 
-Defined in: [declarations.ts:142](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L142)
+Defined in: [declarations.ts:142](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L142)
 
 An optional flag indicating whether the pipe is a class.
 
@@ -46,7 +46,7 @@ An optional flag indicating whether the pipe is a class.
 
 > `optional` **isFactory**: `boolean`
 
-Defined in: [declarations.ts:146](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L146)
+Defined in: [declarations.ts:146](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L146)
 
 An optional flag indicating whether the pipe is a factory.
 
@@ -56,7 +56,7 @@ An optional flag indicating whether the pipe is a factory.
 
 > **module**: [`PipeType`](../type-aliases/PipeType.md)\<`T`, `R`, `Args`\>
 
-Defined in: [declarations.ts:136](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L136)
+Defined in: [declarations.ts:136](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L136)
 
 The pipe to execute, which can be a function or a string identifier.
 
@@ -66,7 +66,7 @@ The pipe to execute, which can be a function or a string identifier.
 
 > `optional` **params**: `any`[]
 
-Defined in: [declarations.ts:138](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L138)
+Defined in: [declarations.ts:138](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L138)
 
 An optional array of parameters to pass to the pipe.
 
@@ -76,6 +76,6 @@ An optional array of parameters to pass to the pipe.
 
 > `optional` **priority**: `number`
 
-Defined in: [declarations.ts:140](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L140)
+Defined in: [declarations.ts:140](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L140)
 
 An optional priority level of the pipe.

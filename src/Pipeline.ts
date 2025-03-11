@@ -103,8 +103,9 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
    * @returns The current Pipeline instance.
    */
   through (...pipes: Array<MixedPipe<T, R, Args>>): this {
+    const priority = this._defaultPriority
     const metaPipes = pipes.map(
-      pipe => (isString(pipe) || isFunction(pipe)) ? { module: pipe, priority: this._defaultPriority } : pipe
+      pipe => (isString(pipe) || isFunction(pipe)) ? { module: pipe, priority } : { priority, ...pipe }
     )
 
     this.sortedMetaPipes = Array

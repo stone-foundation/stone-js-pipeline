@@ -8,7 +8,7 @@
 
 > **NextPipe**\<`T`, `R`\>: [`PipeExecutor`](PipeExecutor.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:58](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L58)
+Defined in: [declarations.ts:58](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L58)
 
 Next Pipe Executor function type.
 

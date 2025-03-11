@@ -8,7 +8,7 @@
 
 > **FactoryPipe**\<`T`, `R`, `Args`\>: (...`args`) => [`FunctionalPipe`](FunctionalPipe.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:24](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L24)
+Defined in: [declarations.ts:24](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L24)
 
 A factory function type that represents a pipe.
 

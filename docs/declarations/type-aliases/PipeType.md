@@ -8,7 +8,7 @@
 
 > **PipeType**\<`T`, `R`, `Args`\>: [`PipeAlias`](PipeAlias.md) \| [`PipeClass`](PipeClass.md)\<`T`, `R`, `Args`\> \| [`FunctionalPipe`](FunctionalPipe.md)\<`T`, `R`\> \| [`FactoryPipe`](FactoryPipe.md)\<`T`, `R`, `Args`\>
 
-Defined in: [declarations.ts:31](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L31)
+Defined in: [declarations.ts:31](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L31)
 
 A type that can either be a function or a string, representing a pipeline step.
 

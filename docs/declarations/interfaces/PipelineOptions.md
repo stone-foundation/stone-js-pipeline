@@ -6,7 +6,7 @@
 
 # Interface: PipelineOptions\<T, R, Args\>
 
-Defined in: [declarations.ts:87](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L87)
+Defined in: [declarations.ts:87](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L87)
 
 ConfigContextOptions.
 
@@ -24,7 +24,7 @@ ConfigContextOptions.
 
 > `optional` **hooks**: [`PipelineHook`](../type-aliases/PipelineHook.md)\<`T`, `R`, `Args`\>
 
-Defined in: [declarations.ts:88](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L88)
+Defined in: [declarations.ts:88](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L88)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [declarations.ts:88](https://github.com/stonemjs/pipeline/blob/bdafb
 
 > `optional` **resolver**: [`PipeResolver`](../type-aliases/PipeResolver.md)\<`T`, `R`, `Args`\>
 
-Defined in: [declarations.ts:89](https://github.com/stonemjs/pipeline/blob/bdafb2a2f2d57df256cc97fee41b6f9b9fdd69f9/src/declarations.ts#L89)
+Defined in: [declarations.ts:89](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L89)
