@@ -1,6 +1,6 @@
 import { Pipeline } from '../src/Pipeline'
 import { PipelineError } from '../src/PipelineError'
-import { PipeExecutor, PipeResolver } from '../src/declarations'
+import { PipeExecutor, PipeResolver, Promiseable } from '../src/declarations'
 
 describe('Pipeline Class', () => {
   let mockResolver: PipeResolver<number>
@@ -170,7 +170,7 @@ describe('Pipeline Class', () => {
     const beforeHook = vi.fn()
     const afterHook = vi.fn()
 
-    const pipe = async (v: number, next: PipeExecutor<number>): Promise<number> => await next(v + 1)
+    const pipe = (v: number, next: PipeExecutor<number>): Promiseable<number> => next(v + 1)
 
     const pipeline = Pipeline
       .create<number>({
