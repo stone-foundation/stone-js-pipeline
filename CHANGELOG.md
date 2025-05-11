@@ -4,6 +4,13 @@ All notable changes to the "Stone.js pipeline" extension will be documented in t
 
 ## Unreleased
 
+## [0.1.0](https://github.com/stonemjs/pipeline/compare/v0.0.46...v0.1.0) (2025-05-11)
+
+
+### Features
+
+* transform pipe to meta pipe and change the license to MIT ([14ede7d](https://github.com/stonemjs/pipeline/commit/14ede7d9eb488ff17b0c37637fda06e0296e7b4c))
+
 ## [0.0.46](https://github.com/stonemjs/pipeline/compare/v0.0.45...v0.0.46) (2024-11-25)
 
 
