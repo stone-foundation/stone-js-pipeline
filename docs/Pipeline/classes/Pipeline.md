@@ -147,7 +147,7 @@ Set the passable objects being sent through the pipeline.
 
 `T`
 
-The object to pass through the pipeline.
+The single object to pass through the pipeline. This object will be processed by the pipeline's configured operations.
 
 #### Returns
 
