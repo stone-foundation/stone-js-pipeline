@@ -1,28 +1,34 @@
-[**Pipeline Documentation v0.0.46**](../../README.md)
+[**Pipeline Documentation**](../../README.md)
 
 ***
 
-[Pipeline Documentation](../../modules.md) / [declarations](../README.md) / PipeResolver
+[Pipeline Documentation](../../README.md) / [declarations](../README.md) / PipeResolver
 
 # Type Alias: PipeResolver()\<T, R, Args\>
 
-> **PipeResolver**\<`T`, `R`, `Args`\>: (`pipe`) => [`PipeInstance`](PipeInstance.md)\<`T`, `R`\> \| `undefined`
+> **PipeResolver**\<`T`, `R`, `Args`\> = (`pipe`) => [`PipeInstance`](PipeInstance.md)\<`T`, `R`\> \| `undefined`
 
-Defined in: [declarations.ts:82](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L82)
+Defined in: [declarations.ts:82](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L82)
 
 A function type that represents a resolver for a given pipe.
 
 ## Type Parameters
 
-• **T** = `unknown`
+### T
+
+`T` = `unknown`
 
 The type of the passable object in the pipeline.
 
-• **R** = `T`
+### R
+
+`R` = `T`
 
 The type of the return value from the resolved pipe, which defaults to `T`.
 
-• **Args** *extends* `any`[] = `any`[]
+### Args
+
+`Args` *extends* `any`[] = `any`[]
 
 ## Parameters
 

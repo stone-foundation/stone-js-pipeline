@@ -1,24 +1,28 @@
-[**Pipeline Documentation v0.0.46**](../../README.md)
+[**Pipeline Documentation**](../../README.md)
 
 ***
 
-[Pipeline Documentation](../../modules.md) / [declarations](../README.md) / NextPipe
+[Pipeline Documentation](../../README.md) / [declarations](../README.md) / NextPipe
 
 # Type Alias: NextPipe\<T, R\>
 
-> **NextPipe**\<`T`, `R`\>: [`PipeExecutor`](PipeExecutor.md)\<`T`, `R`\>
+> **NextPipe**\<`T`, `R`\> = [`PipeExecutor`](PipeExecutor.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:58](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L58)
+Defined in: [declarations.ts:58](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L58)
 
 Next Pipe Executor function type.
 
 ## Type Parameters
 
-• **T** = `unknown`
+### T
+
+`T` = `unknown`
 
 The type of the passable object.
 
-• **R** = `T`
+### R
+
+`R` = `T`
 
 The type of the return value from the pipeline execution, defaulting to `T`.
 

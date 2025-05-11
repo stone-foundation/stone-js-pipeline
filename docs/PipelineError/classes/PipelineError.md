@@ -1,12 +1,12 @@
-[**Pipeline Documentation v0.0.46**](../../README.md)
+[**Pipeline Documentation**](../../README.md)
 
 ***
 
-[Pipeline Documentation](../../modules.md) / [PipelineError](../README.md) / PipelineError
+[Pipeline Documentation](../../README.md) / [PipelineError](../README.md) / PipelineError
 
 # Class: PipelineError
 
-Defined in: [PipelineError.ts:4](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/PipelineError.ts#L4)
+Defined in: [PipelineError.ts:4](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/PipelineError.ts#L4)
 
 Custom error for pipeline operations.
 
@@ -16,11 +16,11 @@ Custom error for pipeline operations.
 
 ## Constructors
 
-### new PipelineError()
+### Constructor
 
-> **new PipelineError**(`message`): [`PipelineError`](PipelineError.md)
+> **new PipelineError**(`message`): `PipelineError`
 
-Defined in: [PipelineError.ts:5](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/PipelineError.ts#L5)
+Defined in: [PipelineError.ts:5](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/PipelineError.ts#L5)
 
 #### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [PipelineError.ts:5](https://github.com/stonemjs/pipeline/blob/43771
 
 #### Returns
 
-[`PipelineError`](PipelineError.md)
+`PipelineError`
 
 #### Overrides
 

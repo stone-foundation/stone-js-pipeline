@@ -3,20 +3,20 @@ import { defineMiddleware, isConstructor, isFunction, isFunctionPipe, isString }
 
 describe('defineMiddleware', () => {
   it('should define middleware with provided pipe and options', () => {
-    const pipe: FunctionalPipe<number, string> = (value) => value.toString()
+    const module: FunctionalPipe<number, string> = (value) => value.toString()
     const options: Omit<MetaPipe<number, string>, 'module'> = { isClass: true, priority: 1, params: [1] }
 
-    const result = defineMiddleware(pipe, options)
+    const result = defineMiddleware(module, options)
 
-    expect(result).toEqual({ ...options, pipe })
+    expect(result).toEqual({ ...options, module })
   })
 
   it('should define middleware with pipe and no options', () => {
-    const pipe: FunctionalPipe<number, string> = (value) => value.toString()
+    const module: FunctionalPipe<number, string> = (value) => value.toString()
 
-    const result = defineMiddleware(pipe)
+    const result = defineMiddleware(module)
 
-    expect(result).toEqual({ pipe })
+    expect(result).toEqual({ module })
   })
 })
 

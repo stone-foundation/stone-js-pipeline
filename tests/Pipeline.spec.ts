@@ -123,6 +123,90 @@ describe('Pipeline Class', () => {
     const mockResolver = vi.fn().mockReturnValue(new Pipe())
     const pipeline = Pipeline.create<number>({ resolver: mockResolver })
     await pipeline.send(1).via('name').through({ module: Pipe, isClass: true }).thenReturn()
-    expect(mockResolver).toHaveBeenCalledWith({ pipe: Pipe, isClass: true })
+    expect(mockResolver).toHaveBeenCalledWith({ module: Pipe, priority: 10, isClass: true })
+  })
+
+  it('should filter out duplicate pipes and sort them by priority descending', () => {
+    const pipe1 = vi.fn()
+    const pipe2 = vi.fn()
+    const pipeline = Pipeline.create<number>()
+    pipeline
+      .defaultPriority(5)
+      .through(
+        { module: pipe1, priority: 1 },
+        { module: pipe2, priority: 10 },
+        { module: pipe1, priority: 1 } // duplicate
+      )
+
+    // @ts-expect-error
+    const modules = pipeline.sortedMetaPipes.map(p => p.module)
+    expect(modules).toEqual([pipe2, pipe1])
+  })
+
+  it('should append new pipes via .pipe() without losing previous ones', () => {
+    const pipe1 = vi.fn()
+    const pipe2 = vi.fn()
+    const pipe3 = vi.fn()
+    const pipeline = Pipeline.create<number>()
+    pipeline.through(pipe1, pipe2)
+    pipeline.pipe(pipe3)
+
+    // @ts-expect-error
+    const modules = pipeline.sortedMetaPipes.map(p => p.module)
+    expect(modules).toContain(pipe1)
+    expect(modules).toContain(pipe2)
+    expect(modules).toContain(pipe3)
+  })
+
+  it('should wrap a resolver-returned function in an object with correct method', async () => {
+    const fnPipe = vi.fn().mockImplementation((v: number) => v + 1)
+    const resolver = vi.fn().mockReturnValue(fnPipe)
+    const pipeline = Pipeline.create<number>({ resolver }).send(1).through('some-pipe').sync()
+    const result = pipeline.thenReturn()
+    expect(result).toBe(2)
+  })
+
+  it('should execute hook listeners before and after each pipe', async () => {
+    const beforeHook = vi.fn()
+    const afterHook = vi.fn()
+
+    const pipe = async (v: number, next: PipeExecutor<number>): Promise<number> => await next(v + 1)
+
+    const pipeline = Pipeline
+      .create<number>({
+      hooks: {
+        onProcessingPipe: [beforeHook],
+        onPipeProcessed: [afterHook]
+      }
+    })
+      .send(1)
+      .through(pipe)
+      .sync()
+
+    const result = pipeline.thenReturn()
+    expect(result).toBe(2)
+    expect(beforeHook).toHaveBeenCalled()
+    expect(afterHook).toHaveBeenCalled()
+  })
+
+  it('should execute hook listeners before and after each pipe (async)', async () => {
+    const beforeHook = vi.fn()
+    const afterHook = vi.fn()
+
+    const module = async (v: number, next: PipeExecutor<number>): Promise<number> => await next(v + 1)
+    const module2 = async (v: number, next: PipeExecutor<number>): Promise<number> => await next(v + 1)
+
+    const pipeline = Pipeline
+      .create<number>()
+      .on('onProcessingPipe', beforeHook)
+      .on('onPipeProcessed', afterHook)
+      .send(1)
+      .through({ module, priority: undefined }, { module: module2 })
+      .sync(false)
+
+    const result = await pipeline.thenReturn()
+    expect(result).toBe(3)
+    expect(beforeHook).toHaveBeenCalled()
+    expect(afterHook).toHaveBeenCalled()
   })
 })

@@ -1,22 +1,28 @@
-[**Pipeline Documentation v0.0.46**](../../README.md)
+[**Pipeline Documentation**](../../README.md)
 
 ***
 
-[Pipeline Documentation](../../modules.md) / [declarations](../README.md) / PipelineHookContext
+[Pipeline Documentation](../../README.md) / [declarations](../README.md) / PipelineHookContext
 
 # Interface: PipelineHookContext\<T, R, Args\>
 
-Defined in: [declarations.ts:164](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L164)
+Defined in: [declarations.ts:164](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L164)
 
 PipelineHookContext Type.
 
 ## Type Parameters
 
-• **T** = `unknown`
+### T
 
-• **R** = `T`
+`T` = `unknown`
 
-• **Args** *extends* `any`[] = `any`[]
+### R
+
+`R` = `T`
+
+### Args
+
+`Args` *extends* `any`[] = `any`[]
 
 ## Properties
 
@@ -24,7 +30,7 @@ PipelineHookContext Type.
 
 > **instance**: [`PipeCustomInstance`](PipeCustomInstance.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:167](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L167)
+Defined in: [declarations.ts:167](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L167)
 
 ***
 
@@ -32,7 +38,7 @@ Defined in: [declarations.ts:167](https://github.com/stonemjs/pipeline/blob/4377
 
 > **passable**: `T`
 
-Defined in: [declarations.ts:165](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L165)
+Defined in: [declarations.ts:165](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L165)
 
 ***
 
@@ -40,7 +46,7 @@ Defined in: [declarations.ts:165](https://github.com/stonemjs/pipeline/blob/4377
 
 > **pipe**: [`PipeCustomInstance`](PipeCustomInstance.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:166](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L166)
+Defined in: [declarations.ts:166](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L166)
 
 ***
 
@@ -48,4 +54,4 @@ Defined in: [declarations.ts:166](https://github.com/stonemjs/pipeline/blob/4377
 
 > **pipes**: [`MetaPipe`](MetaPipe.md)\<`T`, `R`, `Args`\>[]
 
-Defined in: [declarations.ts:168](https://github.com/stonemjs/pipeline/blob/437717c2a315db06047331ae86596a6933a8a199/src/declarations.ts#L168)
+Defined in: [declarations.ts:168](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L168)

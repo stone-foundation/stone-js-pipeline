@@ -109,7 +109,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
     )
 
     this.sortedMetaPipes = Array
-      .from(new Set(metaPipes))
+      .from(metaPipes.reduce((acc, pipe) => acc.set(pipe.module, pipe), new Map()).values())
       .sort((a, b) => a.priority !== undefined && b.priority !== undefined ? a.priority - b.priority : 0)
       .reverse()
 
