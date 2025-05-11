@@ -1,35 +1,43 @@
-[**Pipeline Documentation v0.0.46**](../../README.md)
+[**Pipeline Documentation**](../../README.md)
 
 ***
 
-[Pipeline Documentation](../../modules.md) / [Pipeline](../README.md) / Pipeline
+[Pipeline Documentation](../../README.md) / [Pipeline](../README.md) / Pipeline
 
-# Class: Pipeline\<T, R\>
+# Class: Pipeline\<T, R, Args\>
 
-Defined in: [Pipeline.ts:13](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L13)
+Defined in: [Pipeline.ts:31](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L31)
 
 Class representing a Pipeline.
 
 ## Type Parameters
 
-• **T** *extends* [`Passable`](../../definitions/type-aliases/Passable.md)
+### T
+
+`T` = `unknown`
 
 The type of the passable object in the pipeline.
 
-• **R** *extends* [`Passable`](../../definitions/type-aliases/Passable.md) \| `T` = `T`
+### R
+
+`R` = `T`
 
 The type of the return value from the pipeline execution.
 
 This class is responsible for managing and executing a series of operations
 on a set of passable values through multiple configurable pipes.
 
+### Args
+
+`Args` *extends* `any`[] = `any`[]
+
 ## Constructors
 
-### new Pipeline()
+### Constructor
 
-> `protected` **new Pipeline**\<`T`, `R`\>(`options`?): [`Pipeline`](Pipeline.md)\<`R`\>
+> `protected` **new Pipeline**\<`T`, `R`, `Args`\>(`options?`): `Pipeline`\<`T`, `R`, `Args`\>
 
-Defined in: [Pipeline.ts:50](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L50)
+Defined in: [Pipeline.ts:68](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L68)
 
 Initialize a new Pipeline instance.
 
@@ -37,13 +45,13 @@ Initialize a new Pipeline instance.
 
 ##### options?
 
-[`PipelineOptions`](../../definitions/interfaces/PipelineOptions.md)\<`T`, `R`\>
+[`PipelineOptions`](../../declarations/interfaces/PipelineOptions.md)\<`T`, `R`, `Args`\>
 
 Optional Pipeline options.
 
 #### Returns
 
-[`Pipeline`](Pipeline.md)\<`R`\>
+`Pipeline`\<`T`, `R`, `Args`\>
 
 ## Methods
 
@@ -51,7 +59,7 @@ Optional Pipeline options.
 
 > **defaultPriority**(`value`): `this`
 
-Defined in: [Pipeline.ts:66](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L66)
+Defined in: [Pipeline.ts:83](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L83)
 
 Set the default priority for pipes in the pipeline.
 
@@ -71,11 +79,41 @@ The current Pipeline instance.
 
 ***
 
+### on()
+
+> **on**(`name`, `listener`): `this`
+
+Defined in: [Pipeline.ts:158](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L158)
+
+Add a hook to the pipeline.
+
+#### Parameters
+
+##### name
+
+[`HookName`](../../declarations/type-aliases/HookName.md)
+
+The name of the hook.
+
+##### listener
+
+The hook listener function.
+
+[`PipelineHookListener`](../../declarations/type-aliases/PipelineHookListener.md)\<`T`, `R`, `Args`\> | [`PipelineHookListener`](../../declarations/type-aliases/PipelineHookListener.md)\<`T`, `R`, `Args`\>[]
+
+#### Returns
+
+`this`
+
+The current Pipeline instance.
+
+***
+
 ### pipe()
 
-> **pipe**(`pipe`): `this`
+> **pipe**(...`pipe`): `this`
 
-Defined in: [Pipeline.ts:103](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L103)
+Defined in: [Pipeline.ts:125](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L125)
 
 Add additional pipes to the pipeline.
 
@@ -83,9 +121,9 @@ Add additional pipes to the pipeline.
 
 ##### pipe
 
-A single pipe or an array of pipes.
+...[`MixedPipe`](../../declarations/type-aliases/MixedPipe.md)\<`T`, `R`, `Args`\>[]
 
-[`MixedPipe`](../../definitions/type-aliases/MixedPipe.md) | [`MixedPipe`](../../definitions/type-aliases/MixedPipe.md)[]
+A single pipe or a list of pipes to add.
 
 #### Returns
 
@@ -97,9 +135,9 @@ The current Pipeline instance.
 
 ### send()
 
-> **send**(...`passable`): `this`
+> **send**(`passable`): `this`
 
-Defined in: [Pipeline.ts:77](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L77)
+Defined in: [Pipeline.ts:94](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L94)
 
 Set the passable objects being sent through the pipeline.
 
@@ -107,9 +145,9 @@ Set the passable objects being sent through the pipeline.
 
 ##### passable
 
-...`T`[]
+`T`
 
-The objects to pass through the pipeline.
+The single object to pass through the pipeline. This object will be processed by the pipeline's configured operations.
 
 #### Returns
 
@@ -123,7 +161,7 @@ The current Pipeline instance.
 
 > **sync**(`value`): `this`
 
-Defined in: [Pipeline.ts:124](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L124)
+Defined in: [Pipeline.ts:146](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L146)
 
 Configure the pipeline to run synchronously or asynchronously.
 
@@ -145,9 +183,9 @@ The current Pipeline instance.
 
 ### then()
 
-> **then**(`destination`): `R` \| `Promise`\<`R`\>
+> **then**(`destination`): [`Promiseable`](../../declarations/type-aliases/Promiseable.md)\<`R`\>
 
-Defined in: [Pipeline.ts:135](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L135)
+Defined in: [Pipeline.ts:171](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L171)
 
 Run the pipeline with a final destination callback.
 
@@ -155,13 +193,13 @@ Run the pipeline with a final destination callback.
 
 ##### destination
 
-[`PipeExecutor`](../../definitions/type-aliases/PipeExecutor.md)\<`T`, `R`\>
+[`PipeExecutor`](../../declarations/type-aliases/PipeExecutor.md)\<`T`, `R`\>
 
 The final function to execute.
 
 #### Returns
 
-`R` \| `Promise`\<`R`\>
+[`Promiseable`](../../declarations/type-aliases/Promiseable.md)\<`R`\>
 
 The result of the pipeline, either synchronously or as a Promise.
 
@@ -169,15 +207,15 @@ The result of the pipeline, either synchronously or as a Promise.
 
 ### thenReturn()
 
-> **thenReturn**(): `R` \| `Promise`\<`R`\>
+> **thenReturn**(): [`Promiseable`](../../declarations/type-aliases/Promiseable.md)\<`R`\>
 
-Defined in: [Pipeline.ts:149](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L149)
+Defined in: [Pipeline.ts:189](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L189)
 
 Run the pipeline and return the result.
 
 #### Returns
 
-`R` \| `Promise`\<`R`\>
+[`Promiseable`](../../declarations/type-aliases/Promiseable.md)\<`R`\>
 
 The result of the pipeline, either synchronously or as a Promise.
 
@@ -185,9 +223,9 @@ The result of the pipeline, either synchronously or as a Promise.
 
 ### through()
 
-> **through**(`pipes`): `this`
+> **through**(...`pipes`): `this`
 
-Defined in: [Pipeline.ts:88](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L88)
+Defined in: [Pipeline.ts:105](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L105)
 
 Set the pipes for the pipeline.
 
@@ -195,9 +233,9 @@ Set the pipes for the pipeline.
 
 ##### pipes
 
-[`MixedPipe`](../../definitions/type-aliases/MixedPipe.md)[]
+...[`MixedPipe`](../../declarations/type-aliases/MixedPipe.md)\<`T`, `R`, `Args`\>[]
 
-Array of pipes or MetaPipe instances.
+The pipes or MetaPipe instances.
 
 #### Returns
 
@@ -211,7 +249,7 @@ The current Pipeline instance.
 
 > **via**(`method`): `this`
 
-Defined in: [Pipeline.ts:113](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L113)
+Defined in: [Pipeline.ts:135](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L135)
 
 Set the method to call on each pipe.
 
@@ -233,28 +271,36 @@ The current Pipeline instance.
 
 ### create()
 
-> `static` **create**\<`T`, `R`\>(`options`?): [`Pipeline`](Pipeline.md)\<`T`, `R`\>
+> `static` **create**\<`T`, `R`, `Args`\>(`options?`): `Pipeline`\<`T`, `R`\>
 
-Defined in: [Pipeline.ts:41](https://github.com/stonemjs/pipeline/blob/25f97e5694101638ed81fbfb328425b2c68320f6/src/Pipeline.ts#L41)
+Defined in: [Pipeline.ts:59](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/Pipeline.ts#L59)
 
 Create a pipeline instance.
 
 #### Type Parameters
 
-• **T** *extends* [`Passable`](../../definitions/type-aliases/Passable.md)
+##### T
 
-• **R** *extends* [`Passable`](../../definitions/type-aliases/Passable.md) = `T`
+`T` = `unknown`
+
+##### R
+
+`R` = `T`
+
+##### Args
+
+`Args` *extends* `any`[] = `any`[]
 
 #### Parameters
 
 ##### options?
 
-[`PipelineOptions`](../../definitions/interfaces/PipelineOptions.md)\<`T`, `R`\>
+[`PipelineOptions`](../../declarations/interfaces/PipelineOptions.md)\<`T`, `R`, `Args`\>
 
 Optional Pipeline options.
 
 #### Returns
 
-[`Pipeline`](Pipeline.md)\<`T`, `R`\>
+`Pipeline`\<`T`, `R`\>
 
 The pipeline instance.
