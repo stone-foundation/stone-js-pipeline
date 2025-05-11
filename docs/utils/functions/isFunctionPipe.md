@@ -8,7 +8,7 @@
 
 > **isFunctionPipe**\<`T`, `R`, `Args`\>(`metaPipe`): `metaPipe is { module: FunctionalPipe<T, R> }`
 
-Defined in: [utils.ts:48](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/utils.ts#L48)
+Defined in: [utils.ts:48](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/utils.ts#L48)
 
 Check if the meta pipe is a function pipe.
 

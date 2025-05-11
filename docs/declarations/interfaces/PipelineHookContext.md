@@ -6,7 +6,7 @@
 
 # Interface: PipelineHookContext\<T, R, Args\>
 
-Defined in: [declarations.ts:164](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L164)
+Defined in: [declarations.ts:164](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L164)
 
 PipelineHookContext Type.
 
@@ -30,7 +30,7 @@ PipelineHookContext Type.
 
 > **instance**: [`PipeCustomInstance`](PipeCustomInstance.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:167](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L167)
+Defined in: [declarations.ts:167](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L167)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [declarations.ts:167](https://github.com/stonemjs/pipeline/blob/c193
 
 > **passable**: `T`
 
-Defined in: [declarations.ts:165](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L165)
+Defined in: [declarations.ts:165](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L165)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [declarations.ts:165](https://github.com/stonemjs/pipeline/blob/c193
 
 > **pipe**: [`PipeCustomInstance`](PipeCustomInstance.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:166](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L166)
+Defined in: [declarations.ts:166](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L166)
 
 ***
 
@@ -54,4 +54,4 @@ Defined in: [declarations.ts:166](https://github.com/stonemjs/pipeline/blob/c193
 
 > **pipes**: [`MetaPipe`](MetaPipe.md)\<`T`, `R`, `Args`\>[]
 
-Defined in: [declarations.ts:168](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L168)
+Defined in: [declarations.ts:168](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L168)

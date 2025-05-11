@@ -8,7 +8,7 @@
 
 > **isClassPipe**\<`T`, `R`, `Args`\>(`metaPipe`): `metaPipe is { module: PipeClass<T, R, Args> }`
 
-Defined in: [utils.ts:72](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/utils.ts#L72)
+Defined in: [utils.ts:72](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/utils.ts#L72)
 
 Check if the meta pipe is a class pipe.
 

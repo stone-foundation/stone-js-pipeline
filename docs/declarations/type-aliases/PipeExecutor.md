@@ -8,7 +8,7 @@
 
 > **PipeExecutor**\<`T`, `R`\> = (`passable`) => [`Promiseable`](Promiseable.md)\<`R`\>
 
-Defined in: [declarations.ts:47](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L47)
+Defined in: [declarations.ts:47](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L47)
 
 Pipe Executor function type.
 

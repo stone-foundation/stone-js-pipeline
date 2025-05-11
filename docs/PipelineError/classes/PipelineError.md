@@ -6,7 +6,7 @@
 
 # Class: PipelineError
 
-Defined in: [PipelineError.ts:4](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/PipelineError.ts#L4)
+Defined in: [PipelineError.ts:4](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/PipelineError.ts#L4)
 
 Custom error for pipeline operations.
 
@@ -20,7 +20,7 @@ Custom error for pipeline operations.
 
 > **new PipelineError**(`message`): `PipelineError`
 
-Defined in: [PipelineError.ts:5](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/PipelineError.ts#L5)
+Defined in: [PipelineError.ts:5](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/PipelineError.ts#L5)
 
 #### Parameters
 

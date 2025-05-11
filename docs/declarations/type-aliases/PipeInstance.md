@@ -8,7 +8,7 @@
 
 > **PipeInstance**\<`T`, `R`\> = [`PipeDefaultInstance`](../interfaces/PipeDefaultInstance.md)\<`T`, `R`\> \| [`PipeCustomInstance`](../interfaces/PipeCustomInstance.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:101](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L101)
+Defined in: [declarations.ts:101](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L101)
 
 Represents a pipe instance that contains different pipe functions.
 

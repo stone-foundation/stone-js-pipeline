@@ -119,7 +119,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
   /**
    * Add additional pipes to the pipeline.
    *
-   * @param pipe - A single pipe or an array of pipes.
+   * @param {...MixedPipe} pipe - A single pipe or a list of pipes to add.
    * @returns The current Pipeline instance.
    */
   pipe (...pipe: Array<MixedPipe<T, R, Args>>): this {

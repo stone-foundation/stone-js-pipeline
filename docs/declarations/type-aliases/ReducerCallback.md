@@ -8,7 +8,7 @@
 
 > **ReducerCallback**\<`T`, `R`, `Args`\> = (`previousPipeExecutor`, `currentPipe`) => [`PipeExecutor`](PipeExecutor.md)\<`T`, `R`\>
 
-Defined in: [declarations.ts:70](https://github.com/stonemjs/pipeline/blob/c1939f54bb171590323c05e0cd983f2249e30e00/src/declarations.ts#L70)
+Defined in: [declarations.ts:70](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L70)
 
 Reducer callback function type used to build a sequence of pipe executions.
 
