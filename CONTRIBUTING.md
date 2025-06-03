@@ -115,7 +115,7 @@ If the project maintainer has any additional requirements, you will find them li
 - **Consider our release cycle** - We try to follow [SemVer v2.0.0](http://semver.org/). Randomly breaking public APIs is not an option.
 - **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
 - **Conventional commit** - For you commit messages, use [Conventional commit message guidelines](https://www.conventionalcommits.org/en/v1.0.0/).
-- **Send coherent history** - Make sure each individual  commit in your pull request is meaningful. If you had to make multiple  intermediate commits while developing, please [squash them](http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
+- **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple  intermediate commits while developing, please [squash them](http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
 - **Release Strategy** - We use [Release Please Action](https://github.com/googleapis/release-please-action)
 
 **Happy coding**!

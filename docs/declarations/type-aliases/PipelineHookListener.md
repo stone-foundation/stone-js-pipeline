@@ -8,7 +8,7 @@
 
 > **PipelineHookListener**\<`T`, `R`, `Args`\> = (`context`) => [`Promiseable`](Promiseable.md)\<`void`\>
 
-Defined in: [declarations.ts:176](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/declarations.ts#L176)
+Defined in: [declarations.ts:176](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/declarations.ts#L176)
 
 PipelineHookListener Type.
 

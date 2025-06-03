@@ -1,21 +1,25 @@
-# Stone.js: Pipeline
+# Stone.js - Pipeline
 
 [![npm](https://img.shields.io/npm/l/@stone-js/pipeline)](https://opensource.org/licenses/MIT)
 [![npm](https://img.shields.io/npm/v/@stone-js/pipeline)](https://www.npmjs.com/package/@stone-js/pipeline)
 [![npm](https://img.shields.io/npm/dm/@stone-js/pipeline)](https://www.npmjs.com/package/@stone-js/pipeline)
 ![Maintenance](https://img.shields.io/maintenance/yes/2025)
+[![Build Status](https://github.com/stonemjs/pipeline/actions/workflows/main.yml/badge.svg)](https://github.com/stonemjs/pipeline/actions/workflows/main.yml)
 [![Publish Package to npmjs](https://github.com/stonemjs/pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/stonemjs/pipeline/actions/workflows/release.yml)
+[![codecov](https://codecov.io/gh/stonemjs/pipeline/graph/badge.svg?token=5MKS9179YL)](https://codecov.io/gh/stonemjs/pipeline)
+[![CodeQL](https://github.com/stonemjs/pipeline/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/stonemjs/pipeline/security/code-scanning)
+[![Dependabot Status](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/stonemjs/pipeline/network/updates)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 An implementation of the Chain of Responsibility (CoR) pattern tailored for modern JavaScript and TypeScript apps using the Continuum Architecture philosophy.
 
 ---
 
-## 🧠 Synopsis
+## Synopsis
 
 The `Pipeline` class is a flexible processor of "passable" values through a series of configurable steps called pipes. Pipes can be functions, factory-generated handlers, or class instances. Pipelines can run synchronously or asynchronously, support custom hook events, and allow pipe resolution via a resolver for advanced dependency injection scenarios.
 
-## 📦 Installation
+## Installation
 
 ```bash
 npm i @stone-js/pipeline
@@ -32,7 +36,7 @@ pnpm add @stone-js/pipeline
 import { Pipeline } from '@stone-js/pipeline'
 ```
 
-## ⚡️ Quick Start
+## Quick Start
 
 ```ts
 import { Pipeline } from '@stone-js/pipeline'
@@ -49,7 +53,7 @@ const result = Pipeline.create<number>()
 console.log(result) // Output: 4
 ```
 
-## ✅ Features
+## Features
 
 * Chain-of-responsibility execution
 * Supports function, factory, and class-based pipes
@@ -59,7 +63,7 @@ console.log(result) // Output: 4
 * Priority-based execution order
 * Type-safe with TypeScript, compatible with JavaScript
 
-## 🧰 Usage Patterns
+## Usage Patterns
 
 ### Synchronous Pipeline
 
@@ -151,8 +155,8 @@ class CustomPipe {
 const result = Pipeline.create<number>()
   .send(1)
   .through(
-    { module: factoryPipe, isFactory: true },
-    { module: CustomPipe, isClass: true }
+    { module: CustomPipe, isClass: true },
+    { module: factoryPipe, isFactory: true }
   )
   .sync()
   .thenReturn()
@@ -194,7 +198,7 @@ const result = Pipeline.create<number>()
 console.log(result) // Output: 4 → (1 + 1) * 2
 ```
 
-## 🧾 API
+## API
 
 All methods are chainable:
 
@@ -210,17 +214,28 @@ All methods are chainable:
 > Pipes can be:
 >
 > * `Function`: `(value, next) => next(...)`
-> * `Factory`: `() => (value, next) => ...`
+> * `Factory`: `() => (value, next) => next(...)`
 > * `Class`: `new MyPipe().handle(...)`
 
-## 📚 Documentation
 
-* [Full API Docs](https://github.com/stonemjs/pipeline/blob/main/docs)
+## Summary
 
-## 🤝 Contributing
+The `Pipeline` class provides a powerful and flexible way to process values through a series of steps, allowing for both synchronous and asynchronous operations. It supports various types of pipes, including functions, factories, and classes, and offers lifecycle hooks for custom behavior during processing.
+
+## Learn More
+
+This package is part of the Stone.js ecosystem, a modern JavaScript framework built around the Continuum Architecture.
+
+Explore the full documentation: https://stonejs.com
+
+## API documentation
+
+* [API](https://github.com/stonemjs/pipeline/blob/main/docs)
+
+## Contributing
 
 See [Contributing Guide](https://github.com/stonemjs/pipeline/blob/main/CONTRIBUTING.md)
 
-## 🙏 Credits
+## Credits
 
 Inspired by [Laravel's Pipeline](https://github.com/laravel/framework/blob/10.x/src/Illuminate/Pipeline/Pipeline.php)
