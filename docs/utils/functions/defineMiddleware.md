@@ -8,7 +8,7 @@
 
 > **defineMiddleware**\<`T`, `R`, `Args`\>(`module`, `options`): [`MetaPipe`](../../declarations/interfaces/MetaPipe.md)\<`T`, `R`, `Args`\>
 
-Defined in: [utils.ts:10](https://github.com/stonemjs/pipeline/blob/4373463e5220be8ed997c5e4b7e1c704715db014/src/utils.ts#L10)
+Defined in: [utils.ts:10](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/utils.ts#L10)
 
 Define a new middleware for the pipeline.
 
