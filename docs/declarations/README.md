@@ -1,9 +1,3 @@
-[**Pipeline Documentation**](../README.md)
-
-***
-
-[Pipeline Documentation](../README.md) / declarations
-
 # declarations
 
 ## Interfaces

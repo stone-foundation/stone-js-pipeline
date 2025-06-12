@@ -1,14 +1,8 @@
-[**Pipeline Documentation**](../../README.md)
-
-***
-
-[Pipeline Documentation](../../README.md) / [declarations](../README.md) / ReducerCallback
-
 # Type Alias: ReducerCallback()\<T, R, Args\>
 
-> **ReducerCallback**\<`T`, `R`, `Args`\> = (`previousPipeExecutor`, `currentPipe`) => [`PipeExecutor`](PipeExecutor.md)\<`T`, `R`\>
-
-Defined in: [declarations.ts:70](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/declarations.ts#L70)
+```ts
+type ReducerCallback<T, R, Args> = (previousPipeExecutor, currentPipe) => PipeExecutor<T, R>;
+```
 
 Reducer callback function type used to build a sequence of pipe executions.
 

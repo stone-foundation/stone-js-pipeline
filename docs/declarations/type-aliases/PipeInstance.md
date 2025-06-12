@@ -1,14 +1,10 @@
-[**Pipeline Documentation**](../../README.md)
-
-***
-
-[Pipeline Documentation](../../README.md) / [declarations](../README.md) / PipeInstance
-
 # Type Alias: PipeInstance\<T, R\>
 
-> **PipeInstance**\<`T`, `R`\> = [`PipeDefaultInstance`](../interfaces/PipeDefaultInstance.md)\<`T`, `R`\> \| [`PipeCustomInstance`](../interfaces/PipeCustomInstance.md)\<`T`, `R`\>
-
-Defined in: [declarations.ts:101](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/declarations.ts#L101)
+```ts
+type PipeInstance<T, R> = 
+  | PipeDefaultInstance<T, R>
+| PipeCustomInstance<T, R>;
+```
 
 Represents a pipe instance that contains different pipe functions.
 

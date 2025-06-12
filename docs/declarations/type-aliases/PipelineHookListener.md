@@ -1,14 +1,8 @@
-[**Pipeline Documentation**](../../README.md)
-
-***
-
-[Pipeline Documentation](../../README.md) / [declarations](../README.md) / PipelineHookListener
-
 # Type Alias: PipelineHookListener()\<T, R, Args\>
 
-> **PipelineHookListener**\<`T`, `R`, `Args`\> = (`context`) => [`Promiseable`](Promiseable.md)\<`void`\>
-
-Defined in: [declarations.ts:176](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/declarations.ts#L176)
+```ts
+type PipelineHookListener<T, R, Args> = (context) => Promiseable<void>;
+```
 
 PipelineHookListener Type.
 

@@ -1,12 +1,4 @@
-[**Pipeline Documentation**](../../README.md)
-
-***
-
-[Pipeline Documentation](../../README.md) / [declarations](../README.md) / PipeCustomInstance
-
 # Interface: PipeCustomInstance\<T, R\>
-
-Defined in: [declarations.ts:125](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/declarations.ts#L125)
 
 Represents a pipe instance that contains different pipe functions.
 
@@ -29,4 +21,6 @@ The keys represent function names, and the values are functions that take specif
 
 ## Indexable
 
-\[`key`: `string`\]: `any`
+```ts
+[key: string]: any
+```
