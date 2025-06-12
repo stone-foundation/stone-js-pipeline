@@ -1,14 +1,8 @@
-[**Pipeline Documentation**](../../README.md)
-
-***
-
-[Pipeline Documentation](../../README.md) / [utils](../README.md) / defineMiddleware
-
 # Function: defineMiddleware()
 
-> **defineMiddleware**\<`T`, `R`, `Args`\>(`module`, `options`): [`MetaPipe`](../../declarations/interfaces/MetaPipe.md)\<`T`, `R`, `Args`\>
-
-Defined in: [utils.ts:10](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/utils.ts#L10)
+```ts
+function defineMiddleware<T, R, Args>(module, options): MetaPipe<T, R, Args>;
+```
 
 Define a new middleware for the pipeline.
 

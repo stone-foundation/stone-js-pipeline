@@ -1,14 +1,8 @@
-[**Pipeline Documentation**](../../README.md)
-
-***
-
-[Pipeline Documentation](../../README.md) / [utils](../README.md) / isClassPipe
-
 # Function: isClassPipe()
 
-> **isClassPipe**\<`T`, `R`, `Args`\>(`metaPipe`): `metaPipe is { module: PipeClass<T, R, Args> }`
-
-Defined in: [utils.ts:72](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/utils.ts#L72)
+```ts
+function isClassPipe<T, R, Args>(metaPipe): metaPipe is { module: PipeClass<T, R, Args> };
+```
 
 Check if the meta pipe is a class pipe.
 

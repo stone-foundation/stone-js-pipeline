@@ -1,14 +1,8 @@
-[**Pipeline Documentation**](../../README.md)
-
-***
-
-[Pipeline Documentation](../../README.md) / [utils](../README.md) / isFunctionPipe
-
 # Function: isFunctionPipe()
 
-> **isFunctionPipe**\<`T`, `R`, `Args`\>(`metaPipe`): `metaPipe is { module: FunctionalPipe<T, R> }`
-
-Defined in: [utils.ts:48](https://github.com/stonemjs/pipeline/blob/2eff0e8e1fb564de78ed833206823c91f7932eb4/src/utils.ts#L48)
+```ts
+function isFunctionPipe<T, R, Args>(metaPipe): metaPipe is { module: FunctionalPipe<T, R> };
+```
 
 Check if the meta pipe is a function pipe.
 

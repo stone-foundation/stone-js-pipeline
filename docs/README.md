@@ -1,8 +1,4 @@
-**Pipeline Documentation**
-
-***
-
-# Pipeline Documentation
+# Pipeline
 
 ## Modules
 

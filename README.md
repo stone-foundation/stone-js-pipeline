@@ -4,18 +4,20 @@
 [![npm](https://img.shields.io/npm/v/@stone-js/pipeline)](https://www.npmjs.com/package/@stone-js/pipeline)
 [![npm](https://img.shields.io/npm/dm/@stone-js/pipeline)](https://www.npmjs.com/package/@stone-js/pipeline)
 ![Maintenance](https://img.shields.io/maintenance/yes/2025)
-[![Build Status](https://github.com/stonemjs/pipeline/actions/workflows/main.yml/badge.svg)](https://github.com/stonemjs/pipeline/actions/workflows/main.yml)
-[![Publish Package to npmjs](https://github.com/stonemjs/pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/stonemjs/pipeline/actions/workflows/release.yml)
-[![codecov](https://codecov.io/gh/stonemjs/pipeline/graph/badge.svg?token=5MKS9179YL)](https://codecov.io/gh/stonemjs/pipeline)
-[![CodeQL](https://github.com/stonemjs/pipeline/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/stonemjs/pipeline/security/code-scanning)
-[![Dependabot Status](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/stonemjs/pipeline/network/updates)
+[![Build Status](https://github.com/stone-foundation/stone-js-pipeline/actions/workflows/main.yml/badge.svg)](https://github.com/stone-foundation/stone-js-pipeline/actions/workflows/main.yml)
+[![Publish Package to npmjs](https://github.com/stone-foundation/stone-js-pipeline/actions/workflows/release.yml/badge.svg)](https://github.com/stone-foundation/stone-js-pipeline/actions/workflows/release.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=stone-foundation_stone-js-pipeline&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=stone-foundation_stone-js-pipeline)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=stone-foundation_stone-js-pipeline&metric=coverage)](https://sonarcloud.io/summary/new_code?id=stone-foundation_stone-js-pipeline)
+[![Security Policy](https://img.shields.io/badge/Security-Policy-blue.svg)](./SECURITY.md)
+[![CodeQL](https://github.com/stone-foundation/stone-js-pipeline/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/stone-foundation/stone-js-pipeline/security/code-scanning)
+[![Dependabot Status](https://img.shields.io/badge/Dependabot-enabled-brightgreen.svg)](https://github.com/stone-foundation/stone-js-pipeline/network/updates)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 An implementation of the Chain of Responsibility (CoR) pattern tailored for modern JavaScript and TypeScript apps using the Continuum Architecture philosophy.
 
 ---
 
-## Synopsis
+## Overview
 
 The `Pipeline` class is a flexible processor of "passable" values through a series of configurable steps called pipes. Pipes can be functions, factory-generated handlers, or class instances. Pipelines can run synchronously or asynchronously, support custom hook events, and allow pipe resolution via a resolver for advanced dependency injection scenarios.
 
@@ -226,15 +228,15 @@ The `Pipeline` class provides a powerful and flexible way to process values thro
 
 This package is part of the Stone.js ecosystem, a modern JavaScript framework built around the Continuum Architecture.
 
-Explore the full documentation: https://stonejs.com
+Explore the full documentation: https://stonejs.dev
 
 ## API documentation
 
-* [API](https://github.com/stonemjs/pipeline/blob/main/docs)
+* [API](https://github.com/stone-foundation/stone-js-pipeline/blob/main/docs)
 
 ## Contributing
 
-See [Contributing Guide](https://github.com/stonemjs/pipeline/blob/main/CONTRIBUTING.md)
+See [Contributing Guide](https://github.com/stone-foundation/stone-js-pipeline/blob/main/CONTRIBUTING.md)
 
 ## Credits
 
