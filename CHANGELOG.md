@@ -4,6 +4,13 @@ All notable changes to the "Stone.js pipeline" extension will be documented in t
 
 ## Unreleased
 
+## [0.1.1](https://github.com/stone-foundation/stone-js-pipeline/compare/v0.1.0...v0.1.1) (2025-06-12)
+
+
+### Miscellaneous Chores
+
+* migrate to stone-foundation, integrate sonar cloud and add security policy ([#17](https://github.com/stone-foundation/stone-js-pipeline/issues/17)) ([ec2f372](https://github.com/stone-foundation/stone-js-pipeline/commit/ec2f372a1ddb763d00bb1e6fb4ac77f2debf7b19))
+
 ## [0.1.0](https://github.com/stone-foundation/stone-js-pipeline/compare/v0.0.46...v0.1.0) (2025-05-11)
 
 
