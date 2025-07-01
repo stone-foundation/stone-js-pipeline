@@ -29,7 +29,7 @@ npm i @stone-js/pipeline
 yarn add @stone-js/pipeline
 # or
 pnpm add @stone-js/pipeline
-````
+```
 
 > \[!IMPORTANT]
 > This package is **pure ESM**. Ensure your `package.json` includes `"type": "module"` or configure your bundler appropriately.
@@ -228,7 +228,7 @@ The `Pipeline` class provides a powerful and flexible way to process values thro
 
 This package is part of the Stone.js ecosystem, a modern JavaScript framework built around the Continuum Architecture.
 
-Explore the full documentation: https://stonejs.dev
+Explore the full documentation: [https://stonejs.dev](https://stonejs.dev)
 
 ## API documentation
 
