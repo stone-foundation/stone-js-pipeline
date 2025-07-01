@@ -37,7 +37,7 @@ passable: T;
 ### pipe
 
 ```ts
-pipe: PipeCustomInstance<T, R>;
+pipe: MetaPipe<T, R, Args>;
 ```
 
 ***

@@ -41,7 +41,7 @@ describe('isFunction', () => {
     expect(isFunction(() => {})).toBe(true)
     expect(isFunction(function () {})).toBe(true)
     expect(isFunction(async () => {})).toBe(true)
-    expect(isFunction(class { handle (): void {} })).toBe(true) // Classes are functions in JS
+    expect(isFunction(class { handle (): string { return 'Testing' } })).toBe(true) // Classes are functions in JS
   })
 
   it('should return false for non-functions', () => {
@@ -57,7 +57,7 @@ describe('isFunction', () => {
 describe('isConstructor', () => {
   it('should return true for class and function', () => {
     expect(isConstructor(function () {})).toBe(true) // As function is a constructor
-    expect(isConstructor(class { handle (): void {} })).toBe(true)
+    expect(isConstructor(class { handle (): string { return 'Testing' } })).toBe(true)
   })
 
   it('should return false for non-constructor', () => {
@@ -81,6 +81,6 @@ describe('isFunctionPipe', () => {
   it('should return false for non-function pipe', () => {
     expect(isFunctionPipe({ module: 'alias', isAlias: true })).toBe(false)
     expect(isFunctionPipe({ module: () => {}, isFactory: true })).toBe(false)
-    expect(isFunctionPipe({ module: class { handle (): void {} }, isClass: true })).toBe(false)
+    expect(isFunctionPipe({ module: class { handle (): string { return 'Testing' } }, isClass: true })).toBe(false)
   })
 })

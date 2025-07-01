@@ -22,5 +22,5 @@ The keys represent function names, and the values are functions that take specif
 ## Indexable
 
 ```ts
-[key: string]: any
+[key: string]: FunctionalPipe<T, R>
 ```
