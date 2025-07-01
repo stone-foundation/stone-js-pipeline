@@ -4,6 +4,13 @@ All notable changes to the "Stone.js pipeline" extension will be documented in t
 
 ## Unreleased
 
+## [0.1.2](https://github.com/stone-foundation/stone-js-pipeline/compare/v0.1.1...v0.1.2) (2025-07-01)
+
+
+### Bug Fixes
+
+* Add the 'isAlias' flag to clarify pipe handling by marking alias types explicitly ([#23](https://github.com/stone-foundation/stone-js-pipeline/issues/23)) ([2c0f031](https://github.com/stone-foundation/stone-js-pipeline/commit/2c0f0311fa2ae7b27eb8050c51a19ace8559a4bf))
+
 ## [0.1.1](https://github.com/stone-foundation/stone-js-pipeline/compare/v0.1.0...v0.1.1) (2025-06-12)
 
 
