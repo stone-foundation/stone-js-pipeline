@@ -4,6 +4,13 @@ All notable changes to the "Stone.js pipeline" extension will be documented in t
 
 ## Unreleased
 
+## [0.1.3](https://github.com/stone-foundation/stone-js-pipeline/compare/v0.1.2...v0.1.3) (2025-07-01)
+
+
+### Bug Fixes
+
+* fix type issues by updating type annotations and refactoring parts of the pipe handling logic ([#25](https://github.com/stone-foundation/stone-js-pipeline/issues/25)) ([97865f6](https://github.com/stone-foundation/stone-js-pipeline/commit/97865f667f34e282f4d3b7ab78156970907a2878))
+
 ## [0.1.2](https://github.com/stone-foundation/stone-js-pipeline/compare/v0.1.1...v0.1.2) (2025-07-01)
 
 
