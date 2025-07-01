@@ -27,7 +27,7 @@ export const isString = (value: unknown): value is string => typeof value === 's
  * @param value - The value to check.
  * @returns `true` if the value is a function, otherwise `false`.
  */
-export const isFunction = (value: unknown): value is Function => typeof value === 'function'
+export const isFunction = <ClassType = Function>(value: unknown): value is ClassType => typeof value === 'function'
 
 /**
  * Checks if the given value is a constructor function.

@@ -3,7 +3,8 @@
 ```ts
 type PipeInstance<T, R> = 
   | PipeDefaultInstance<T, R>
-| PipeCustomInstance<T, R>;
+  | PipeCustomInstance<T, R>
+  | object;
 ```
 
 Represents a pipe instance that contains different pipe functions.

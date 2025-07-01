@@ -2,7 +2,8 @@ import {
   isString,
   isFunction,
   isClassPipe,
-  isFactoryPipe
+  isFactoryPipe,
+  isFunctionPipe
 } from './utils'
 import {
   HookName,
@@ -12,6 +13,7 @@ import {
   PipeExecutor,
   PipelineHook,
   PipeResolver,
+  FunctionalPipe,
   PipelineOptions,
   ReducerCallback,
   PipeCustomInstance,
@@ -255,7 +257,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
 
     this.executeHooks('onPipeProcessed', currentPipe, instance, passable)
 
-    return result
+    return result as R
   }
 
   /**
@@ -274,7 +276,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
       if (instance === undefined) {
         throw new PipelineError(`Cannot resolve this pipe ${String(currentPipe)}.`)
       }
-    } else if (isFunction(instance)) {
+    } else if (isFunction<FunctionalPipe<T, R>>(instance)) {
       instance = { [this.method]: instance }
     }
 
@@ -293,11 +295,10 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
     if (isFunction(currentPipe.module)) {
       if (isClassPipe(currentPipe)) {
         return new currentPipe.module.prototype.constructor(...([] as unknown as Args))
-      }
-      return {
-        [this.method]: isFactoryPipe(currentPipe)
-          ? currentPipe.module(...([] as unknown as Args))
-          : currentPipe.module
+      } else if (isFactoryPipe(currentPipe)) {
+        return { [this.method]: currentPipe.module(...([] as unknown as Args)) }
+      } else if (isFunctionPipe(currentPipe)) {
+        return { [this.method]: currentPipe.module }
       }
     }
   }

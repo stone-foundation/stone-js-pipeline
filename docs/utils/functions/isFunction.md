@@ -1,10 +1,16 @@
 # Function: isFunction()
 
 ```ts
-function isFunction(value): value is Function;
+function isFunction<ClassType>(value): value is ClassType;
 ```
 
 Check if the value is a function.
+
+## Type Parameters
+
+### ClassType
+
+`ClassType` = `Function`
 
 ## Parameters
 
@@ -16,6 +22,6 @@ The value to check.
 
 ## Returns
 
-`value is Function`
+`value is ClassType`
 
 `true` if the value is a function, otherwise `false`.

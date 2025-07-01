@@ -98,7 +98,7 @@ export interface PipelineOptions<T = unknown, R = T, Args extends any[] = any[]>
  * An object representing a set of functions used as part of the pipeline.
  * The keys represent function names, and the values are functions that take specific arguments.
  */
-export type PipeInstance<T = unknown, R = T> = PipeDefaultInstance<T, R> | PipeCustomInstance<T, R>
+export type PipeInstance<T = unknown, R = T> = PipeDefaultInstance<T, R> | PipeCustomInstance<T, R> | object
 
 /**
  * Represents a pipe instance that contains a default pipe function.
@@ -123,7 +123,7 @@ export interface PipeDefaultInstance<T = unknown, R = T> {
  * The keys represent function names, and the values are functions that take specific arguments.
  */
 export interface PipeCustomInstance<T = unknown, R = T> {
-  [key: string]: FunctionalPipe<T, R> | any
+  [key: string]: FunctionalPipe<T, R>
 }
 
 /**
@@ -163,7 +163,7 @@ export type PipelineHook<T = unknown, R = T, Args extends any[] = any[]> = Recor
  */
 export interface PipelineHookContext<T = unknown, R = T, Args extends any[] = any[]> {
   passable: T
-  pipe: PipeCustomInstance<T, R>
+  pipe: MetaPipe<T, R, Args>
   instance: PipeCustomInstance<T, R>
   pipes: Array<MetaPipe<T, R, Args>>
 }
