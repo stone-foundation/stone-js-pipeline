@@ -116,6 +116,25 @@ describe('Pipeline Class', () => {
     }).rejects.toThrow(PipelineError)
   })
 
+  it('parses an alias pipe with coerced params (string/number/boolean/null)', async () => {
+    const captured: any[] = []
+    const resolver = vi.fn().mockReturnValue({
+      handle: (value: number, next: PipeExecutor<number, number>, ...params: any[]) => { captured.push(...params); return next(value) }
+    })
+    const pipeline = Pipeline.create<number>({ resolver }).via('handle')
+    await pipeline.send(1).through('greet:hello,42,1.5,true,false,null').thenReturn()
+    expect(captured).toEqual(['hello', 42, 1.5, true, false, null])
+  })
+
+  it('reports the class name when a resolved pipe is missing the method', async () => {
+    class MissingMethodPipe { other (): void {} }
+    const resolver = vi.fn().mockReturnValue(new MissingMethodPipe())
+    const pipeline = Pipeline.create<number>({ resolver }).via('handle')
+    await expect(
+      pipeline.send(1).through({ module: MissingMethodPipe, isClass: true }).thenReturn()
+    ).rejects.toThrow(/MissingMethodPipe/)
+  })
+
   it('should call the container to resolve pipes when a container is provided', async () => {
     const Pipe = class {
       name (_value: number, _next: PipeExecutor<number, number>): number | Promise<number> { return 1 }
