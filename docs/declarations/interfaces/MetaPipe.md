@@ -23,7 +23,7 @@ A configuration object used for managing pipes in the pipeline.
 ### isAlias?
 
 ```ts
-optional isAlias: boolean;
+optional isAlias?: boolean;
 ```
 
 An optional flag indicating whether the pipe is a container alias.
@@ -33,7 +33,7 @@ An optional flag indicating whether the pipe is a container alias.
 ### isClass?
 
 ```ts
-optional isClass: boolean;
+optional isClass?: boolean;
 ```
 
 An optional flag indicating whether the pipe is a class.
@@ -43,7 +43,7 @@ An optional flag indicating whether the pipe is a class.
 ### isFactory?
 
 ```ts
-optional isFactory: boolean;
+optional isFactory?: boolean;
 ```
 
 An optional flag indicating whether the pipe is a factory.
@@ -63,7 +63,7 @@ The pipe to execute, which can be a function or a string identifier.
 ### params?
 
 ```ts
-optional params: any[];
+optional params?: any[];
 ```
 
 An optional array of parameters to pass to the pipe.
@@ -73,7 +73,7 @@ An optional array of parameters to pass to the pipe.
 ### priority?
 
 ```ts
-optional priority: number;
+optional priority?: number;
 ```
 
 An optional priority level of the pipe.

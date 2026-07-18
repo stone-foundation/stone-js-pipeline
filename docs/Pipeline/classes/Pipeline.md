@@ -89,9 +89,10 @@ The name of the hook.
 
 ##### listener
 
-The hook listener function.
+  \| [`PipelineHookListener`](../../declarations/type-aliases/PipelineHookListener.md)\<`T`, `R`, `Args`\>
+  \| [`PipelineHookListener`](../../declarations/type-aliases/PipelineHookListener.md)\<`T`, `R`, `Args`\>[]
 
-[`PipelineHookListener`](../../declarations/type-aliases/PipelineHookListener.md)\<`T`, `R`, `Args`\> | [`PipelineHookListener`](../../declarations/type-aliases/PipelineHookListener.md)\<`T`, `R`, `Args`\>[]
+The hook listener function.
 
 #### Returns
 
@@ -152,14 +153,14 @@ The current Pipeline instance.
 ### sync()
 
 ```ts
-sync(value): this;
+sync(value?): this;
 ```
 
 Configure the pipeline to run synchronously or asynchronously.
 
 #### Parameters
 
-##### value
+##### value?
 
 `boolean` = `true`
 

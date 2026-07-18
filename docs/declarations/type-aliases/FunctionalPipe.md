@@ -1,4 +1,4 @@
-# Type Alias: FunctionalPipe()\<T, R\>
+# Type Alias: FunctionalPipe\<T, R\>
 
 ```ts
 type FunctionalPipe<T, R> = (passable, next, ...params) => Promiseable<R>;

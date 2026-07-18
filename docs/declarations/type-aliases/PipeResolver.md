@@ -1,4 +1,4 @@
-# Type Alias: PipeResolver()\<T, R, Args\>
+# Type Alias: PipeResolver\<T, R, Args\>
 
 ```ts
 type PipeResolver<T, R, Args> = (pipe) => PipeInstance<T, R> | undefined;

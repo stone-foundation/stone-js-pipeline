@@ -22,6 +22,8 @@ The type of the return value from the pipeline execution, defaulting to `T`.
 
 ## Param
 
+**passable**
+
 The passable objects being sent through the pipeline.
 
 ## Returns

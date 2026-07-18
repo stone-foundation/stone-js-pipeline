@@ -1,4 +1,4 @@
-# Type Alias: PipelineHookListener()\<T, R, Args\>
+# Type Alias: PipelineHookListener\<T, R, Args\>
 
 ```ts
 type PipelineHookListener<T, R, Args> = (context) => Promiseable<void>;

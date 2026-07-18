@@ -1,4 +1,4 @@
-# Type Alias: FactoryPipe()\<T, R, Args\>
+# Type Alias: FactoryPipe\<T, R, Args\>
 
 ```ts
 type FactoryPipe<T, R, Args> = (...args) => FunctionalPipe<T, R>;

@@ -1,7 +1,7 @@
 # Function: defineMiddleware()
 
 ```ts
-function defineMiddleware<T, R, Args>(module, options): MetaPipe<T, R, Args>;
+function defineMiddleware<T, R, Args>(module, options?): MetaPipe<T, R, Args>;
 ```
 
 Define a new middleware for the pipeline.
@@ -28,7 +28,7 @@ Define a new middleware for the pipeline.
 
 The pipe module to add to the pipeline.
 
-### options
+### options?
 
 `Omit`\<[`MetaPipe`](../../declarations/interfaces/MetaPipe.md)\<`T`, `R`, `Args`\>, `"module"`\> = `{}`
 

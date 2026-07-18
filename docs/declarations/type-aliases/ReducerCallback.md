@@ -1,4 +1,4 @@
-# Type Alias: ReducerCallback()\<T, R, Args\>
+# Type Alias: ReducerCallback\<T, R, Args\>
 
 ```ts
 type ReducerCallback<T, R, Args> = (previousPipeExecutor, currentPipe) => PipeExecutor<T, R>;

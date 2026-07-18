@@ -1,4 +1,4 @@
-# Type Alias: PipeExecutor()\<T, R\>
+# Type Alias: PipeExecutor\<T, R\>
 
 ```ts
 type PipeExecutor<T, R> = (passable) => Promiseable<R>;

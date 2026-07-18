@@ -1,4 +1,4 @@
-# Type Alias: PipeClass()\<T, R, Args\>
+# Type Alias: PipeClass\<T, R, Args\>
 
 ```ts
 type PipeClass<T, R, Args> = (...args) => PipeInstance<T, R>;

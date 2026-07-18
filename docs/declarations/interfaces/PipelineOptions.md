@@ -21,7 +21,7 @@ ConfigContextOptions.
 ### hooks?
 
 ```ts
-optional hooks: PipelineHook<T, R, Args>;
+optional hooks?: PipelineHook<T, R, Args>;
 ```
 
 ***
@@ -29,5 +29,5 @@ optional hooks: PipelineHook<T, R, Args>;
 ### resolver?
 
 ```ts
-optional resolver: PipeResolver<T, R, Args>;
+optional resolver?: PipeResolver<T, R, Args>;
 ```
