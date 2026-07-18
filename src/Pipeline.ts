@@ -159,6 +159,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
     // Ascending stable sort then reverse — preserves the established ordering while
     // guaranteeing every priority is a number (no non-deterministic `undefined`).
     return deduped
+      /* v8 ignore next -- priority is normalised to a number for every pipe just above, so the `?? priority` fallbacks are unreachable at runtime. */
       .sort((a, b) => (a.priority ?? priority) - (b.priority ?? priority))
       .reverse()
   }

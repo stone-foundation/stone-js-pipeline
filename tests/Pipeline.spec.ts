@@ -119,7 +119,7 @@ describe('Pipeline Class', () => {
   it('parses an alias pipe with coerced params (string/number/boolean/null)', async () => {
     const captured: any[] = []
     const resolver = vi.fn().mockReturnValue({
-      handle: (value: number, next: PipeExecutor<number, number>, ...params: any[]) => { captured.push(...params); return next(value) }
+      handle: async (value: number, next: PipeExecutor<number, number>, ...params: any[]) => { captured.push(...params); return await next(value) }
     })
     const pipeline = Pipeline.create<number>({ resolver }).via('handle')
     await pipeline.send(1).through('greet:hello,42,1.5,true,false,null').thenReturn()
@@ -133,6 +133,25 @@ describe('Pipeline Class', () => {
     await expect(
       pipeline.send(1).through({ module: MissingMethodPipe, isClass: true }).thenReturn()
     ).rejects.toThrow(/MissingMethodPipe/)
+  })
+
+  it('reports "anonymous" when a nameless pipe is missing the method', async () => {
+    const anon: any = function () {}
+    Object.defineProperty(anon, 'name', { value: '' })
+    const resolver = vi.fn().mockReturnValue({ other: vi.fn() })
+    const pipeline = Pipeline.create<number>({ resolver }).via('handle')
+    await expect(
+      pipeline.send(1).through({ module: anon, isClass: true }).thenReturn()
+    ).rejects.toThrow(/anonymous/)
+  })
+
+  it('parses an alias pipe with a colon but no params', async () => {
+    const resolver = vi.fn().mockReturnValue({
+      handle: async (value: number, next: PipeExecutor<number, number>) => await next(value + 1)
+    })
+    const pipeline = Pipeline.create<number>({ resolver }).via('handle')
+    const result = await pipeline.send(1).through('bare:').thenReturn()
+    expect(result).toBe(2)
   })
 
   it('should call the container to resolve pipes when a container is provided', async () => {
