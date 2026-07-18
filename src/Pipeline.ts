@@ -43,7 +43,10 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
   /** The default priority for the pipes in the pipeline */
   private _defaultPriority: number
 
-  /** The sorted metadata pipes that will be executed */
+  /** The raw pipes registered via `through`/`pipe`, normalized and sorted at execution time. */
+  private rawPipes: Array<MixedPipe<T, R, Args>>
+
+  /** The sorted metadata pipes that will be executed (computed at `then` time). */
   private sortedMetaPipes: Array<MetaPipe<T, R, Args>>
 
   /** The pipeline hooks */
@@ -70,6 +73,7 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
   protected constructor (options?: PipelineOptions<T, R, Args>) {
     this.isSync = false
     this.method = 'handle'
+    this.rawPipes = []
     this.sortedMetaPipes = []
     this._defaultPriority = 10
     this.resolver = options?.resolver
@@ -84,6 +88,8 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
    */
   defaultPriority (value: number): this {
     this._defaultPriority = value
+    // Re-normalize so the new default applies even when set after `through()`.
+    this.sortedMetaPipes = this.buildSortedPipes()
     return this
   }
 
@@ -105,16 +111,11 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
    * @returns The current Pipeline instance.
    */
   through (...pipes: Array<MixedPipe<T, R, Args>>): this {
-    const priority = this._defaultPriority
-    const metaPipes = pipes.map(
-      pipe => ((isString(pipe) || isFunction(pipe)) ? { module: pipe, priority, isAlias: isString(pipe) } : { priority, ...pipe })
-    )
-
-    this.sortedMetaPipes = Array
-      .from(metaPipes.reduce((acc, pipe) => acc.set(pipe.module, pipe), new Map()).values())
-      .sort((a, b) => a.priority !== undefined && b.priority !== undefined ? a.priority - b.priority : 0)
-      .reverse()
-
+    // Store raw pipes; priority (including the default) is resolved from `_defaultPriority`
+    // at build time, so `defaultPriority()` works regardless of whether it is called before
+    // or after `through()`. `sortedMetaPipes` is kept in sync for inspection.
+    this.rawPipes = pipes
+    this.sortedMetaPipes = this.buildSortedPipes()
     return this
   }
 
@@ -125,7 +126,41 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
    * @returns The current Pipeline instance.
    */
   pipe (...pipe: Array<MixedPipe<T, R, Args>>): this {
-    return this.through(...this.sortedMetaPipes, ...pipe)
+    this.rawPipes = [...this.rawPipes, ...pipe]
+    this.sortedMetaPipes = this.buildSortedPipes()
+    return this
+  }
+
+  /**
+   * Normalize the raw pipes into sorted meta pipes.
+   *
+   * Applies the default priority only when a pipe does not specify one (an explicit
+   * `priority: undefined` no longer silently overrides the default), dedupes by module
+   * (last occurrence wins — override semantics), then orders by priority. Order semantics
+   * are preserved from prior versions: higher priority runs first, and for equal priorities
+   * the last-registered pipe runs first.
+   *
+   * @returns The sorted meta pipes.
+   */
+  private buildSortedPipes (): Array<MetaPipe<T, R, Args>> {
+    const priority = this._defaultPriority
+    const metaPipes: Array<MetaPipe<T, R, Args>> = this.rawPipes.map(
+      pipe => {
+        if (isString(pipe)) { return parseAliasPipe<T, R, Args>(pipe, priority) }
+        if (isFunction(pipe)) { return { module: pipe, priority, isAlias: false } }
+        return { ...pipe, priority: pipe.priority ?? priority }
+      }
+    )
+
+    const deduped = Array.from(
+      metaPipes.reduce((acc, pipe) => acc.set(pipe.module, pipe), new Map<unknown, MetaPipe<T, R, Args>>()).values()
+    )
+
+    // Ascending stable sort then reverse — preserves the established ordering while
+    // guaranteeing every priority is a number (no non-deterministic `undefined`).
+    return deduped
+      .sort((a, b) => (a.priority ?? priority) - (b.priority ?? priority))
+      .reverse()
   }
 
   /**
@@ -174,6 +209,10 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
     if (this.passable === undefined) {
       throw new PipelineError('No passable object has been set for this pipeline.')
     }
+
+    // Resolve priorities now (with the final `_defaultPriority`), so ordering is
+    // independent of the fluent-call order.
+    this.sortedMetaPipes = this.buildSortedPipes()
 
     return this
       .sortedMetaPipes
@@ -294,7 +333,8 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
   private createInstanceFromPipe (currentPipe: MetaPipe<T, R, Args>): PipeCustomInstance<T, R> | undefined {
     if (isFunction(currentPipe.module)) {
       if (isClassPipe(currentPipe)) {
-        return new currentPipe.module.prototype.constructor(...([] as unknown as Args))
+        const PipeClass = currentPipe.module as new (...args: Args) => PipeCustomInstance<T, R>
+        return new PipeClass(...([] as unknown as Args))
       } else if (isFactoryPipe(currentPipe)) {
         return { [this.method]: currentPipe.module(...([] as unknown as Args)) }
       } else if (isFunctionPipe(currentPipe)) {
@@ -312,8 +352,9 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
    */
   private validatePipeMethod (instance: PipeCustomInstance<T, R>, currentPipe: MetaPipe<T, R, Args>): void {
     if (!isFunction(instance[this.method])) {
+      const name = isFunction(currentPipe.module) ? (currentPipe.module.name.length > 0 ? currentPipe.module.name : 'anonymous') : String(currentPipe.module)
       throw new PipelineError(
-        `No method with this name(${this.method}) exists in this constructor(${currentPipe.module.constructor.name})`
+        `No method "${this.method}" exists on pipe "${name}".`
       )
     }
   }
@@ -355,4 +396,56 @@ export class Pipeline<T = unknown, R = T, Args extends any[] = any[]> {
       }
     }
   }
+}
+
+/**
+ * Parse an alias-pipe string into a {@link MetaPipe}, supporting inline parameters.
+ *
+ * Syntax: `'alias'` or `'alias:param1,param2,...'`. Parameters are split on commas, trimmed,
+ * and coerced (`true`/`false` → boolean, `null` → null, numeric → number, otherwise string),
+ * then passed as extra arguments to the pipe method after `(passable, next)`.
+ *
+ * @example
+ * ```ts
+ * pipeline.through('throttle:60,100')   // → throttle(passable, next, 60, 100)
+ * pipeline.through('auth:admin')        // → auth(passable, next, 'admin')
+ * pipeline.through('feature:beta,true') // → feature(passable, next, 'beta', true)
+ * ```
+ *
+ * @param pipe - The alias string.
+ * @param priority - The priority to assign.
+ * @returns The parsed meta pipe.
+ */
+function parseAliasPipe<T, R, Args extends any[]> (pipe: string, priority: number): MetaPipe<T, R, Args> {
+  const separatorIndex = pipe.indexOf(':')
+
+  if (separatorIndex === -1) {
+    return { module: pipe.trim() as unknown as MetaPipe<T, R, Args>['module'], priority, isAlias: true }
+  }
+
+  const alias = pipe.slice(0, separatorIndex).trim()
+  const rawParams = pipe.slice(separatorIndex + 1)
+  const params = rawParams.length > 0 ? rawParams.split(',').map(coercePipeParam) : undefined
+
+  return {
+    module: alias as unknown as MetaPipe<T, R, Args>['module'],
+    priority,
+    isAlias: true,
+    ...(params !== undefined ? { params: params as Args } : {})
+  }
+}
+
+/**
+ * Coerce a raw string parameter to a boolean, null, number, or trimmed string.
+ *
+ * @param raw - The raw parameter.
+ * @returns The coerced value.
+ */
+function coercePipeParam (raw: string): unknown {
+  const value = raw.trim()
+  if (value === 'true') { return true }
+  if (value === 'false') { return false }
+  if (value === 'null') { return null }
+  if (value.length > 0 && /^-?\d+(\.\d+)?$/.test(value)) { return Number(value) }
+  return value
 }

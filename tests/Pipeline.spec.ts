@@ -210,3 +210,50 @@ describe('Pipeline Class', () => {
     expect(afterHook).toHaveBeenCalled()
   })
 })
+
+describe('Pipeline — priority resolution hardening', () => {
+  it('applies defaultPriority set AFTER through() (order-independent)', () => {
+    const p1: any = { module: () => {}, isFunction: true }
+    const p2: any = { module: () => {}, isFunction: true }
+    const a = Pipeline.create().through(p1, p2).defaultPriority(100) as any
+    expect(a.sortedMetaPipes.every((m: any) => m.priority === 100)).toBe(true)
+
+    const b = Pipeline.create().defaultPriority(100).through(p1, p2) as any
+    expect(b.sortedMetaPipes.every((m: any) => m.priority === 100)).toBe(true)
+  })
+
+  it('does not let an explicit priority:undefined override the default', () => {
+    const p: any = { module: () => {}, isFunction: true, priority: undefined }
+    const pipeline = Pipeline.create().defaultPriority(42).through(p) as any
+    expect(pipeline.sortedMetaPipes[0].priority).toBe(42)
+  })
+
+  it('orders by priority (higher first)', () => {
+    const low: any = { module: () => {}, isFunction: true, priority: 1 }
+    const high: any = { module: () => {}, isFunction: true, priority: 9 }
+    const pipeline = Pipeline.create().through(low, high) as any
+    expect(pipeline.sortedMetaPipes[0].priority).toBe(9)
+    expect(pipeline.sortedMetaPipes[1].priority).toBe(1)
+  })
+})
+
+describe('Pipeline — string alias with inline params', () => {
+  it('parses "alias:param1,param2" into a meta pipe with coerced params', () => {
+    const p: any = Pipeline.create().through('throttle:60,100,true,beta') as any
+    const meta = p.sortedMetaPipes[0]
+    expect(meta.module).toBe('throttle')
+    expect(meta.isAlias).toBe(true)
+    expect(meta.params).toEqual([60, 100, true, 'beta'])
+  })
+
+  it('parses a bare alias with no params', () => {
+    const p: any = Pipeline.create().through('auth') as any
+    expect(p.sortedMetaPipes[0].module).toBe('auth')
+    expect(p.sortedMetaPipes[0].params).toBeUndefined()
+  })
+
+  it('coerces null and negative/decimal numbers', () => {
+    const p: any = Pipeline.create().through('x:null,-3,1.5,hello') as any
+    expect(p.sortedMetaPipes[0].params).toEqual([null, -3, 1.5, 'hello'])
+  })
+})
